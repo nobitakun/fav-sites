@@ -1,0 +1,20 @@
+<nav class="navbar navbar-dark bg-dark navbar-expand-md fixed-top">
+  <a class="navbar-brand" href="/">FAV SITES</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbars" aria-controls="navbars" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbars">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <%= link_to(content_tag(:i, ' Top', class: 'fa fa-angle-right'), root_path, class: 'nav-link') %>
+      </li>
+      <li class="nav-item">
+        <%= link_to(content_tag(:i, ' Signup', class: 'fa fa-angle-right'), signup_path, class: 'nav-link') %>
+      </li>
+      <li class="nav-item">
+        <%= link_to(content_tag(:i, ' Login', class: 'fa fa-angle-right'), login_path, class: 'nav-link') %>
+      </li>
+    </ul>
+  </div>
+</nav>

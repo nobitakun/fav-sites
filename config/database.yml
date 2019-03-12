@@ -18,14 +18,14 @@ default: &default
 
 development:
   <<: *default
-  database: fav-spots_development
+  database: fav-sites_development
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: fav-spots_test
+  database: fav-sites_test
 
 # As with config/secrets.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
@@ -48,7 +48,7 @@ test:
 #
 production:
   <<: *default
-  database: fav_spots_production
+  database: fav_sites_production
   pool: 5
   username: <%= ENV['DB_USER'] %>
   password: <%= ENV['DB_PASS'] %>

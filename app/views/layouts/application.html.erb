@@ -13,6 +13,10 @@
   </head>
 
   <body class="<%= yield(:body_class) %>" id="<%= yield(:body_id) %>">
+    
+    <header>
+      <%= render 'layouts/navbar' %>
+    </header>
 
     <div class="container" id="container">
       <div class="row">
