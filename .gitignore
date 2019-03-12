@@ -6,6 +6,8 @@
 
 # Ignore bundler config.
 /.bundle
+/vendor/bundler
+/.env
 
 # Ignore all logfiles and tempfiles.
 /log/*
@@ -17,3 +19,10 @@
 /yarn-error.log
 
 .byebug_history
+
+# Ignore uploaded images
+/public/uploads/*
+
+/public/assets/*
+
+/config/deploy/*
