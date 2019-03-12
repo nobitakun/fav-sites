@@ -1,14 +1,31 @@
 <!DOCTYPE html>
-<html>
+<html lang="ja">
   <head>
-    <title>FavSites</title>
+    <title><%= content_for?(:title) ? yield(:title) + ' | FavSites' : 'FavSites' %></title>
+    <%= yield(:meta) %>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
+    <meta charset="utf-8">
+    <meta http-equiv="content-language" content="ja">
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
-    <%= yield %>
+  <body class="<%= yield(:body_class) %>" id="<%= yield(:body_id) %>">
+
+    <div class="container" id="container">
+      <div class="row">
+
+        <main role="main" class="col-md-8 pt-3">
+          <article class="main-content">
+            <%= render 'layouts/flash_messages' %>
+            <%= yield %>
+          </article>
+        </main>
+
+      </div><!-- .row -->
+    </div><!-- .container -->
   </body>
+  
 </html>
