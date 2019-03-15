@@ -1,0 +1,17 @@
+<% if stars.any? %>
+  <ul class="mark_archive_list d-flex flex-wrap">
+    <% stars.each do |star| %>
+      <li class="mr-4 mb-4" id="<%= star.mark.id %>">
+        <a class="url_link mb-2 hover" href="<%= star.mark.url %>">
+          <%= image_tag 'https://s.wordpress.com/mshots/v1/' + star.mark.url + '?w=640&h=480', class: 'thumb' %>
+          <%= image_tag 'https://www.google.com/s2/favicons?domain=' + star.mark.url, class: 'favicon' %>
+        </a>
+        <p class="mb-0"><%= link_to star.mark.name, star.mark.url, class: 'title' %></p>
+        <p><%= link_to star.mark.url, star.mark.url, class: 'url' %></p>
+        
+      </li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>まだマイリストに登録しているブックマークはありません。</p>
+<% end %>

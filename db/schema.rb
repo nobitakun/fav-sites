@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190312155238) do
+ActiveRecord::Schema.define(version: 20190315132106) do
 
   create_table "marks", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
     t.string "name"
@@ -24,6 +24,15 @@ ActiveRecord::Schema.define(version: 20190312155238) do
     t.index ["user_id"], name: "index_marks_on_user_id"
   end
 
+  create_table "stars", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
+    t.bigint "mark_id"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["mark_id"], name: "index_stars_on_mark_id"
+    t.index ["user_id"], name: "index_stars_on_user_id"
+  end
+
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
     t.string "name"
     t.string "email"
@@ -35,4 +44,6 @@ ActiveRecord::Schema.define(version: 20190312155238) do
   end
 
   add_foreign_key "marks", "users"
+  add_foreign_key "stars", "marks"
+  add_foreign_key "stars", "users"
 end

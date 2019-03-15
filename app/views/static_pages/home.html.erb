@@ -1,62 +1,54 @@
 <% if logged_in? %>
   <h1><%= current_user.name %> さん</h1>
   
-  <h2>マイブックマーク</h2>
+  <h2>登録したブックマーク</h2>
   
   <%= render 'marks/marks', marks: @marks %>
   
-  <footer>
-    <!-- Button trigger modal -->
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-      ブックマーク登録
-    </button>
-    
-    <!-- Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">ブックマーク追加</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <%= form_for(@mark) do |f| %>
-            <div class="modal-body">
-              <div class="form-group">
-                <%= f.label :name, 'サイト名' %>
-                <%= f.text_field :name, class: 'form-control' %>
-              </div>
-              
-              <div class="form-group">
-                <%= f.label :url, 'URL' %>
-                <%= f.text_field :url, class: 'form-control' %>
-              </div>
-              
-              <div class="form-group">
-                <%= f.label :favicon, 'ファビコンURL' %>
-                <%= f.text_field :favicon, class: 'form-control' %>
-              </div>
-              
-              <div class="form-group">
-                <%= f.label :image, 'スクショURL' %>
-                <%= f.text_field :image, class: 'form-control' %>
-              </div>
-              
-              <div class="form-group">
-                <%= f.label :memo, '備考' %>
-                <%= f.text_field :memo, class: 'form-control' %>
-              </div>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">閉じる</button>
-              <%= f.submit '登録', class: 'btn btn-primary' %>
-            </div>
-          <% end %>
+  <!-- Button trigger modal -->
+  <button type="button" class="btn btn-primary mb-5" data-toggle="modal" data-target="#exampleModal">
+    ブックマーク登録
+  </button>
+  
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">ブックマーク追加</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
         </div>
+        <%= form_for(@mark) do |f| %>
+          <div class="modal-body">
+            <div class="form-group">
+              <%= f.label :name, 'サイト名' %>
+              <%= f.text_field :name, class: 'form-control' %>
+            </div>
+            
+            <div class="form-group">
+              <%= f.label :url, 'URL' %>
+              <%= f.text_field :url, class: 'form-control' %>
+            </div>
+            
+            <div class="form-group">
+              <%= f.label :memo, '備考' %>
+              <%= f.text_field :memo, class: 'form-control' %>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">閉じる</button>
+            <%= f.submit '登録', class: 'btn btn-primary' %>
+          </div>
+        <% end %>
       </div>
     </div>
-  </footer>
+  </div>
+  
+  <h2>マイリスト</h2>
+  
+  <%= render 'stars/stars', stars: @stars %>
 
 <% else %>
   <h1>初めての方はユーザー登録をしてください</h1>

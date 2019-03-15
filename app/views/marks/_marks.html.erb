@@ -1,13 +1,33 @@
 <% if marks.any? %>
   <ul class="mark_archive_list d-flex flex-wrap">
     <% marks.each do |mark| %>
-      <li class="mr-4 mb-4">
+      <li class="mr-4 mb-4" id="<%= mark.id %>">
         <a class="url_link mb-2 hover" href="<%= mark.url %>">
           <%= image_tag 'https://s.wordpress.com/mshots/v1/' + mark.url + '?w=640&h=480', class: 'thumb' %>
           <%= image_tag 'https://www.google.com/s2/favicons?domain=' + mark.url, class: 'favicon' %>
         </a>
         <p class="mb-0"><%= link_to mark.name, mark.url, class: 'title' %></p>
         <p><%= link_to mark.url, mark.url, class: 'url' %></p>
+        
+        <% if logged_in? %>
+          <% unless current_user.stars.find_by(mark_id: mark.id) %>
+            <%= form_for(current_user.stars.build) do |f| %>
+              <%= hidden_field_tag :mark_id, mark.id %>
+              <%= hidden_field_tag :user_id, current_user.id %>
+              <%= button_tag(sanitize('<i class="fa fa-star"></i>'), class: 'add_star star_btn') %>
+            <% end %>
+          <% else %>
+            <%= form_for(current_user.stars.find_by(mark_id: mark.id), html: { method: :delete }) do |f| %>
+              <%= button_tag(sanitize('<i class="fa fa-star"></i>'), class: 'remove_star star_btn') %>
+            <% end %>
+          <% end %>
+          
+          
+          
+          
+          
+        <% end %>
+        
       </li>
     <% end %>
   </ul>
