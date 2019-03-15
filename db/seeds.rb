@@ -21,3 +21,13 @@ test_user = User.new(name: 'テストユーザー', email: 'test@test.com', root
 test_user.password = 'test'
 test_user.password_confirmation = 'test'
 test_user.save!
+
+admin_user.marks.create(name: 'YouTube', url: 'https://www.youtube.com/')
+admin_user.marks.create(name: 'amazon', url: 'https://www.amazon.co.jp/')
+admin_user.marks.create(name: 'Yahoo', url: 'https://www.yahoo.co.jp/')
+admin_user.marks.create(name: '楽天', url: 'https://www.rakuten.co.jp/')
+admin_user.marks.create(name: '価格.com', url: 'https://kakaku.com/')
+
+admin_user.marks.create(name: 'radiko.jp', url: 'http://radiko.jp/')
+admin_user.marks.create(name: 'NETFLIX', url: 'https://www.netflix.com//')
+admin_user.marks.create(name: 'hulu', url: 'https://www.happyon.jp/')

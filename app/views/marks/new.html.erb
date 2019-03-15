@@ -1,0 +1,36 @@
+<h1>ブックマーク登録</h1>
+
+<div class="row">
+  <div class="">
+
+    <%= form_for(@mark) do |f| %>
+
+      <div class="form-group">
+        <%= f.label :name, 'サイト名' %>
+        <%= f.text_field :name, class: 'form-control' %>
+      </div>
+      
+      <div class="form-group">
+        <%= f.label :url, 'URL' %>
+        <%= f.text_field :url, class: 'form-control' %>
+      </div>
+      
+      <div class="form-group">
+        <%= f.label :favicon, 'ファビコンURL' %>
+        <%= f.text_field :favicon, class: 'form-control' %>
+      </div>
+      
+      <div class="form-group">
+        <%= f.label :image, 'スクショURL' %>
+        <%= f.text_field :image, class: 'form-control' %>
+      </div>
+      
+      <div class="form-group">
+        <%= f.label :memo, '備考' %>
+        <%= f.text_field :memo, class: 'form-control' %>
+      </div>
+
+      <%= f.submit '登録', class: 'btn btn-primary' %>
+    <% end %>
+  </div>
+</div>
