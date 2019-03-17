@@ -9,7 +9,10 @@ Rails.application.routes.draw do
 
   get 'signup', to: 'users#new'
   
+  get '/marks/:slug', to: 'categories#show'
+  
   resources :users
   resources :marks
   resources :stars
+  resources :categories
 end

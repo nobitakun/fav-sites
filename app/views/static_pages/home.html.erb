@@ -1,7 +1,11 @@
 <% if logged_in? %>
   <h1><%= current_user.name %> さん</h1>
   
-  <h2>登録したブックマーク</h2>
+  <h2>マイリスト</h2>
+  
+  <%= render 'stars/stars', stars: @stars %>
+  
+  <h2>あなたが投稿したブックマーク</h2>
   
   <%= render 'marks/marks', marks: @marks %>
   
@@ -45,10 +49,6 @@
       </div>
     </div>
   </div>
-  
-  <h2>マイリスト</h2>
-  
-  <%= render 'stars/stars', stars: @stars %>
 
 <% else %>
   <h1>初めての方はユーザー登録をしてください</h1>

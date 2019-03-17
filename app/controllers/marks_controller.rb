@@ -2,6 +2,7 @@ class MarksController < ApplicationController
   
   def index
     @marks = Mark.order(created_at: :desc)
+    @categories = Category.all
   end
   
   def new

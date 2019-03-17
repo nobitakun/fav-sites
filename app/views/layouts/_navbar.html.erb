@@ -8,7 +8,10 @@
     <ul class="navbar-nav mr-auto">
       <% if root_logged_in? %>
         <li class="nav-item">
-          <%= link_to(content_tag(:i, ' データーベース図', class: 'fa fa-database'), dbmap_path, class: 'nav-link') %>
+          <%= link_to(content_tag(:i, ' DB図', class: 'fa fa-database'), dbmap_path, class: 'nav-link') %>
+        </li>
+        <li class="nav-item">
+          <%= link_to(content_tag(:i, ' カテゴリー', class: 'fa fa-database'), categories_path, class: 'nav-link') %>
         </li>
       <% end %>
       <% if admin_logged_in? %>
@@ -19,9 +22,14 @@
       <li class="nav-item">
         <%= link_to(content_tag(:i, ' 新着ブックマーク一覧', class: 'fa fa-bookmark'), marks_path, class: 'nav-link') %>
       </li>
-      <li class="nav-item">
-        <%= link_to(content_tag(:i, ' マイリスト', class: 'fa fa-star'), stars_path, class: 'nav-link') %>
-      </li>
+      <% if logged_in? %>
+        <li class="nav-item">
+          <%= link_to(content_tag(:i, ' マイリスト', class: 'fa fa-star'), stars_path, class: 'nav-link') %>
+        </li>
+        <li class="nav-item">
+          <%= link_to(content_tag(:i, ' ブックマークセット', class: 'fa fa-th-large'), stars_path, class: 'nav-link') %>
+        </li>
+      <% end %>
     </ul>
     <ul class="nav navbar-nav navbar-right">
       <% if logged_in? %>

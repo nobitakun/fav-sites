@@ -1,0 +1,13 @@
+<h1>カテゴリー一覧</h1>
+
+<% if @categories.any? %>
+  <ul>
+    <% @categories.each do |category| %>
+      <li><%= link_to category.name, '/marks/' + category.slug %></li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>まだカテゴリーはありません。</p>
+<% end %>
+
+

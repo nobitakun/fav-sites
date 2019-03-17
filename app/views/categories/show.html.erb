@@ -1,4 +1,4 @@
-<h1>新着ブックマーク一覧</h1>
+<h1><%= @category.name %></h1>
 
 <div class="d-flex flex-row-reverse justify-content-between">
   
@@ -15,9 +15,7 @@
   </aside>
   
   <div class="main_col">
-    <%= render 'marks', marks: @marks %>
+    <%= render 'marks/marks', marks: @marks %>
   </div>
   
 </div>
-
-

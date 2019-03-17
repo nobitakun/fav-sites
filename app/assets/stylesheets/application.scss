@@ -83,7 +83,7 @@ main{
 
 .mark_archive_list{
   li{
-    width: 240px;
+    width: 232px;
     list-style: none;
     position: relative;
     .url_link{
@@ -138,7 +138,7 @@ main{
   box-shadow: 0px 0px 2px 2px rgba(0, 0, 0, .1);
   position: absolute;
   left: 36px;
-  top: 152px;
+  top: 146px;
   font-size: 16px;
   line-height: 1;
 }
@@ -149,3 +149,10 @@ main{
 }
 
 
+.main_col{
+  width: calc(100% - 340px);
+}
+
+aside{
+  width: 300px;
+}

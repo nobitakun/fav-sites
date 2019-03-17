@@ -22,12 +22,26 @@ test_user.password = 'test'
 test_user.password_confirmation = 'test'
 test_user.save!
 
-admin_user.marks.create(name: 'YouTube', url: 'https://www.youtube.com/')
-admin_user.marks.create(name: 'amazon', url: 'https://www.amazon.co.jp/')
-admin_user.marks.create(name: 'Yahoo', url: 'https://www.yahoo.co.jp/')
-admin_user.marks.create(name: '楽天', url: 'https://www.rakuten.co.jp/')
-admin_user.marks.create(name: '価格.com', url: 'https://kakaku.com/')
+Category.create(name: 'その他', slug: 'other')
+Category.create(name: '動画', slug: 'video')
+Category.create(name: 'ショッピング総合', slug: 'shopping')
+Category.create(name: 'エンターテイメント', slug: 'entertainment')
+Category.create(name: 'コスメ', slug: 'cosme')
+Category.create(name: 'ファッション', slug: 'fasion')
 
-admin_user.marks.create(name: 'radiko.jp', url: 'http://radiko.jp/')
-admin_user.marks.create(name: 'NETFLIX', url: 'https://www.netflix.com//')
-admin_user.marks.create(name: 'hulu', url: 'https://www.happyon.jp/')
+
+
+admin_user.marks.create(name: 'YouTube', url: 'https://www.youtube.com/', category_ids: [2])
+admin_user.marks.create(name: 'amazon', url: 'https://www.amazon.co.jp/', category_ids: [3])
+admin_user.marks.create(name: 'Yahoo', url: 'https://www.yahoo.co.jp/', category_ids: [4])
+admin_user.marks.create(name: '楽天', url: 'https://www.rakuten.co.jp/', category_ids: [3])
+admin_user.marks.create(name: '価格.com', url: 'https://kakaku.com/', category_ids: [3])
+
+admin_user.marks.create(name: 'radiko.jp', url: 'http://radiko.jp/', category_ids: [1])
+admin_user.marks.create(name: 'NETFLIX', url: 'https://www.netflix.com/', category_ids: [2])
+admin_user.marks.create(name: 'hulu', url: 'https://www.happyon.jp/', category_ids: [2])
+
+admin_user.marks.create(name: 'ZOZOTOWN', url: 'http://zozo.jp/', category_ids: [6])
+admin_user.marks.create(name: '@cosme', url: 'https://www.cosme.net/', category_ids: [5])
+
+
