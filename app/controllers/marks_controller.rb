@@ -26,7 +26,7 @@ class MarksController < ApplicationController
   private
   
   def mark_params
-    params.require(:mark).permit(:name, :url, :favicon, :memo)
+    params.require(:mark).permit(:url)
   end
   
 end

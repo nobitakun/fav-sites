@@ -4,11 +4,16 @@
   
   <aside>
     <% if @categories.any? %>
-      <ul>
-        <% @categories.each do |category| %>
-          <li><%= link_to category.name, '/marks/' + category.slug %></li>
-        <% end %>
-      </ul>
+    
+      <nav class="list-group">
+  			<div class="list-group-item list-group-item-action bg-primary text-white">
+  		    カテゴリー
+  		  </div>
+  		  <% @categories.each do |category| %>
+  		    <%= link_to category.name, '/marks/' + category.slug, class: 'list-group-item list-group-item-action text-dark' %>
+  		  <% end %>
+  		</nav>
+
     <% else %>
       <p>まだカテゴリーはありません。</p>
     <% end %>

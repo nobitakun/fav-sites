@@ -8,4 +8,5 @@ class User < ApplicationRecord
   
   has_many :marks
   has_many :stars
+  has_many :lists
 end

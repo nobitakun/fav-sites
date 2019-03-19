@@ -11,7 +11,12 @@ Rails.application.routes.draw do
   
   get '/marks/:slug', to: 'categories#show'
   
-  resources :users
+  resources :users do
+    member do
+      resources :lists
+    end
+  end
+
   resources :marks
   resources :stars
   resources :categories

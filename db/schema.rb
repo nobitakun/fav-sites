@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190317045041) do
+ActiveRecord::Schema.define(version: 20190317054511) do
 
   create_table "categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
     t.string "name"
@@ -28,10 +28,17 @@ ActiveRecord::Schema.define(version: 20190317045041) do
     t.index ["mark_id"], name: "index_category_marks_on_mark_id"
   end
 
-  create_table "marks", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
+  create_table "lists", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
+    t.bigint "user_id"
     t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_lists_on_user_id"
+  end
+
+  create_table "marks", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
+    t.string "title"
     t.string "url"
-    t.string "memo"
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -59,6 +66,7 @@ ActiveRecord::Schema.define(version: 20190317045041) do
 
   add_foreign_key "category_marks", "categories"
   add_foreign_key "category_marks", "marks"
+  add_foreign_key "lists", "users"
   add_foreign_key "marks", "users"
   add_foreign_key "stars", "marks"
   add_foreign_key "stars", "users"

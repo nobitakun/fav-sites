@@ -39,6 +39,8 @@ gem 'jquery-ui-rails'
 gem 'jquery-turbolinks'
 gem 'font-awesome-rails'
 
+gem 'mechanize'
+
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

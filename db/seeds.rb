@@ -31,17 +31,63 @@ Category.create(name: 'ファッション', slug: 'fasion')
 
 
 
-admin_user.marks.create(name: 'YouTube', url: 'https://www.youtube.com/', category_ids: [2])
-admin_user.marks.create(name: 'amazon', url: 'https://www.amazon.co.jp/', category_ids: [3])
-admin_user.marks.create(name: 'Yahoo', url: 'https://www.yahoo.co.jp/', category_ids: [4])
-admin_user.marks.create(name: '楽天', url: 'https://www.rakuten.co.jp/', category_ids: [3])
-admin_user.marks.create(name: '価格.com', url: 'https://kakaku.com/', category_ids: [3])
 
-admin_user.marks.create(name: 'radiko.jp', url: 'http://radiko.jp/', category_ids: [1])
-admin_user.marks.create(name: 'NETFLIX', url: 'https://www.netflix.com/', category_ids: [2])
-admin_user.marks.create(name: 'hulu', url: 'https://www.happyon.jp/', category_ids: [2])
+url = 'https://www.youtube.com/'
+agent = Mechanize.new
+page = agent.get(url)
+title = page.title
+admin_user.marks.create(title: title, url: url, category_ids: [2])
 
-admin_user.marks.create(name: 'ZOZOTOWN', url: 'http://zozo.jp/', category_ids: [6])
-admin_user.marks.create(name: '@cosme', url: 'https://www.cosme.net/', category_ids: [5])
+url = 'https://www.amazon.co.jp/'
+agent = Mechanize.new
+page = agent.get(url)
+title = page.title
+admin_user.marks.create(title: title, url: url, category_ids: [3])
 
+url = 'https://www.yahoo.co.jp/'
+agent = Mechanize.new
+page = agent.get(url)
+title = page.title
+admin_user.marks.create(title: title, url: url, category_ids: [4])
 
+url = 'https://www.rakuten.co.jp/'
+agent = Mechanize.new
+page = agent.get(url)
+title = page.title
+admin_user.marks.create(title: title, url: url, category_ids: [3])
+
+url = 'https://kakaku.com/'
+agent = Mechanize.new
+page = agent.get(url)
+title = page.title
+admin_user.marks.create(title: title, url: url, category_ids: [3])
+
+url = 'http://radiko.jp/'
+agent = Mechanize.new
+page = agent.get(url)
+title = page.title
+admin_user.marks.create(title: title, url: url, category_ids: [1])
+
+url = 'https://www.netflix.com/'
+agent = Mechanize.new
+page = agent.get(url)
+title = page.title
+admin_user.marks.create(title: title, url: url, category_ids: [2])
+
+url = 'https://www.happyon.jp/'
+agent = Mechanize.new
+page = agent.get(url)
+title = page.title
+admin_user.marks.create(title: title, url: url, category_ids: [2])
+
+# url = 'http://zozo.jp/'
+# agent = Mechanize.new
+# page = agent.get(url)
+# title = page.title
+# admin_user.marks.create(title: title, url: url, category_ids: [6])
+
+# url = 'https://www.cosme.net/'
+# agent = Mechanize.new
+# page = agent.get(url)
+# title = page.title
+# admin_user.marks.create(title: title, url: url, category_ids: [5])
