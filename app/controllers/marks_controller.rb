@@ -26,7 +26,15 @@ class MarksController < ApplicationController
   private
   
   def mark_params
-    params.require(:mark).permit(:url)
+    require 'mechanize'
+    begin
+      agent = Mechanize.new
+      page = agent.get(params[:mark][:url])
+      title = page.title
+    rescue Timeout::Error 
+      title = params[:mark][:url]
+    end
+    params.require(:mark).permit(:url).merge(title: title)
   end
   
 end

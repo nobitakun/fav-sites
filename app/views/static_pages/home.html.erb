@@ -60,7 +60,7 @@
           <%= image_tag 'https://s.wordpress.com/mshots/v1/' + mark.url + '?w=640&h=480', class: 'thumb' %>
           <%= image_tag 'https://www.google.com/s2/favicons?domain=' + mark.url, class: 'favicon' %>
         </a>
-        <p class="mb-0"><%= link_to mark.name, mark.url, class: 'title' %></p>
+        <p class="mb-0"><%= link_to mark.title, mark.url, class: 'title' %></p>
         <p class="url"><%= link_to mark.url, mark.url %></p>
         
         <% if logged_in? %>
