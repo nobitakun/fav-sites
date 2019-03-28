@@ -1,9 +1,20 @@
+<% content_for(:title, 'カテゴリー一覧') %>
+<% content_for(:body_class, 'category') %>
+<% content_for(:body_id, 'index') %>
+
+
 <h1>カテゴリー一覧</h1>
 
 <% if @categories.any? %>
-  <ul>
+  <ul class="category_list">
     <% @categories.each do |category| %>
-      <li><%= link_to category.name, '/marks/' + category.slug %></li>
+      <li class="card mb-3">
+        <%= link_to sanitize('<i class="fa fa-ellipsis-h"></i>'), edit_category_path(id: category.id), class: 'circle_btn setting' %>
+        <%= link_to sanitize('<i class="fa fa-close"></i>'), category, method: :delete, data: { confirm: 'このカテゴリーを削除しますか？' }, class: 'circle_btn close_btn' %>
+        <div class="card-body">
+          <%= link_to category.name + ' : ブックマーク数(' + category.marks.count.to_s + ')', mark_slug_path(slug: category.slug) %>
+        </div>
+      </li>
     <% end %>
   </ul>
 <% else %>

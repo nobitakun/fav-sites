@@ -1,0 +1,33 @@
+<% content_for(:title, 'ブックマークセット編集') %>
+<% content_for(:body_class, 'list') %>
+<% content_for(:body_id, 'edit') %>
+
+<h1>セット: <%= @list.name %> を編集</h1>
+
+<%= form_for @list, class: '' do |f| %>
+
+  <%= render 'shared/error_messages', object: f.object %>
+  
+  <%= f.hidden_field :list_id, value: @list.id  %>
+  
+  <div class="form-group">
+    <%= f.label :name, 'セット名' %>
+    <%= f.text_field :name, class: 'form-control' %>
+  </div>
+  
+  <div id="detail-association-insertion-point">
+    <%= f.fields_for :list_stars do |a| %>
+      <%= render 'list_star_fields', f: a %>
+    <% end %>
+  </div>
+  
+  <%= link_to_add_association 'スターを追加', f, :list_stars,
+    class: 'btn btn-secondary mb-4',
+    data: {
+      association_insertion_node: '#detail-association-insertion-point',
+      association_insertion_method: 'append' }
+   %>
+  
+  <%= f.submit '編集', class: 'btn btn-primary btn-block' %>
+
+<% end %>

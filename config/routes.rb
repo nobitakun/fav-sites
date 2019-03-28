@@ -9,15 +9,18 @@ Rails.application.routes.draw do
 
   get 'signup', to: 'users#new'
   
-  get '/marks/:slug', to: 'categories#show'
+  get '/marks/:slug', to: 'marks#category', as: 'mark_slug'
   
   resources :users do
     member do
-      resources :lists
+      resources :lists, param: :list_id
+      resources :stars, param: :star_id
     end
   end
 
   resources :marks
-  resources :stars
+  get 'search', to: 'marks#search'
+  
   resources :categories
+  resources :settings
 end

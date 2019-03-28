@@ -1,36 +1,23 @@
-<h1>ブックマーク登録</h1>
+<% content_for(:title, 'ブックマーク登録') %>
+<% content_for(:body_class, 'marks') %>
+<% content_for(:body_id, 'new') %>
 
-<div class="row">
-  <div class="">
+<h1 class="text-center">ブックマーク登録</h1>
+
+<div class="row justify-content-center">
+  <div class="col-12 col-md-6">
 
     <%= form_for(@mark) do |f| %>
-
-      <div class="form-group">
-        <%= f.label :name, 'サイト名' %>
-        <%= f.text_field :name, class: 'form-control' %>
-      </div>
-      
+  
+      <%= render 'shared/error_messages', object: f.object %>
+  
       <div class="form-group">
         <%= f.label :url, 'URL' %>
         <%= f.text_field :url, class: 'form-control' %>
       </div>
       
-      <div class="form-group">
-        <%= f.label :favicon, 'ファビコンURL' %>
-        <%= f.text_field :favicon, class: 'form-control' %>
-      </div>
-      
-      <div class="form-group">
-        <%= f.label :image, 'スクショURL' %>
-        <%= f.text_field :image, class: 'form-control' %>
-      </div>
-      
-      <div class="form-group">
-        <%= f.label :memo, '備考' %>
-        <%= f.text_field :memo, class: 'form-control' %>
-      </div>
-
-      <%= f.submit '登録', class: 'btn btn-primary' %>
+      <%= f.submit '登録', class: 'btn btn-block btn-secondary' %>
     <% end %>
+    
   </div>
 </div>

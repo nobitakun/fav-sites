@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190317054511) do
+ActiveRecord::Schema.define(version: 20190325184028) do
 
   create_table "categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
     t.string "name"
@@ -26,6 +26,15 @@ ActiveRecord::Schema.define(version: 20190317054511) do
     t.datetime "updated_at", null: false
     t.index ["category_id"], name: "index_category_marks_on_category_id"
     t.index ["mark_id"], name: "index_category_marks_on_mark_id"
+  end
+
+  create_table "list_stars", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
+    t.bigint "list_id"
+    t.bigint "star_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["list_id"], name: "index_list_stars_on_list_id"
+    t.index ["star_id"], name: "index_list_stars_on_star_id"
   end
 
   create_table "lists", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
@@ -45,9 +54,19 @@ ActiveRecord::Schema.define(version: 20190317054511) do
     t.index ["user_id"], name: "index_marks_on_user_id"
   end
 
+  create_table "settings", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
+    t.string "slug"
+    t.string "label"
+    t.string "content"
+    t.integer "order_num"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "stars", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
     t.bigint "mark_id"
     t.bigint "user_id"
+    t.string "label"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["mark_id"], name: "index_stars_on_mark_id"
@@ -66,6 +85,8 @@ ActiveRecord::Schema.define(version: 20190317054511) do
 
   add_foreign_key "category_marks", "categories"
   add_foreign_key "category_marks", "marks"
+  add_foreign_key "list_stars", "lists"
+  add_foreign_key "list_stars", "stars"
   add_foreign_key "lists", "users"
   add_foreign_key "marks", "users"
   add_foreign_key "stars", "marks"

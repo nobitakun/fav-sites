@@ -1,0 +1,14 @@
+<% if categories.any? %>
+  <nav class="list-group mb-4">
+		<div class="list-group-item list-group-item-action bg-light">
+	    カテゴリー
+	  </div>
+	  <div class="category_list open">
+	  	<% categories.each do |category| %>
+		    <%= link_to category.name, '/marks/' + category.slug, class: 'list-group-item list-group-item-action text-dark' %>
+		  <% end %>
+	  </div>
+	</nav>
+<% else %>
+  <p>まだカテゴリーはありません。</p>
+<% end %>

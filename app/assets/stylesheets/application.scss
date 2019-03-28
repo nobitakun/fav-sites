@@ -49,14 +49,29 @@ button:focus{
   margin-top: 70px;
 }
 
+.main_col{
+  width: calc(100% - 340px);
+  @include media-breakpoint-down(sm) {
+    width: 100%;
+  }
+}
+
+aside{
+  width: 300px;
+  @include media-breakpoint-down(sm) {
+    width: 100%;
+  }
+}
+
+
 
 main{
   h1{
-    font-size: 24px;
-    margin-bottom: 40px;
+    font-size: 20px;
+    margin-bottom: 24px;
   }
   h2{
-    font-size: 20px;
+    font-size: 16px;
     margin-bottom: 24px;
   }
 }
@@ -75,6 +90,8 @@ main{
       }
     }
     .dropdown-menu{
+      left: inherit;
+      right: 0;
       h2{
         padding: 0.25rem 1.5rem 0.8rem;
         font-size: 16px;
@@ -86,32 +103,56 @@ main{
 
 .mark_archive_list{
   li{
-    width: 232px;
     list-style: none;
     position: relative;
-    .url_link{
+    width: 232px;
+    .thumb_area{
+      border-radius: 4px;
+      overflow: hidden;
       position: relative;
       display: block;
+      box-shadow: 0px 0px 6px 3px rgba(0, 0, 0, .1);
       .thumb{
         width: 100%;
-        display: block;
-        border-radius: 4px;
-        box-shadow: 0px 0px 6px 3px rgba(0, 0, 0, .1);
       }
-      .favicon{
-        background: #fff;
-        padding: 8px;
-        border-radius: 100%;
+      .link_btn_area{
+        display: none;
+        background: rgba(0, 0, 0, .4);
         position: absolute;
-        left: -4px;
-        bottom: -4px;
-        box-shadow: 0px 0px 2px 2px rgba(0, 0, 0, .1);
+        width: 100%;
+        left: 0;
+        top: 0;
+        text-align: center;
+        padding: 29% 0;
+        .external, .link, .window{
+          color: #fff;
+          font-size: 24px;
+          background: rgba(0, 0, 0, .4);
+          width: 42px;
+          height: 42px;
+          border-radius: 100%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          &:hover{
+            text-decoration: none;
+            background: rgba(0, 0, 0, .6);
+          }
+        }
       }
+    }/* .thumb_area */
+    .favicon{
+      background: #fff;
+      padding: 8px;
+      border-radius: 100%;
+      position: absolute;
+      left: 2px;
+      bottom: 2px;
+      box-shadow: 0px 0px 2px 2px rgba(0, 0, 0, .1);
     }
-    
     .title{
       color: #333;
-      font-size: 16px;
+      font-size: 14px;
     }
     .url{
       line-height: 1;
@@ -121,19 +162,75 @@ main{
         word-break: break-all;
       }
     }
+    .setting{
+      position: absolute;
+      top: -2px;
+      right: -2px;
+    }
+    @include media-breakpoint-down(sm){
+      width: calc(50% - 30px);
+      margin: 0 15px;
+    }
   }/* li */
 }
 
 
-.add_star{
-  color: #dfdfdf;
+/* category */
+.category_list{
+  li{
+    position: relative;
+    .setting{
+      position: absolute;
+      right: 34px;
+      top: -4px;
+    }
+    .close_btn{
+      position: absolute;
+      right: -4px;
+      top: -4px;
+    }
+  }
 }
 
-.remove_star{
-  color: #f6a12e;
+/* footer */
+footer{
+  #page-top{
+    font-size: 36px;
+    position: fixed;
+    display: block;
+    bottom: 40px;
+    right: 40px;
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    box-shadow: 0 1px 2px 0 rgba(0,0,0,0.14);
+    border-radius: 100%;
+    box-sizing: border-box;
+    z-index: 10;
+    line-height: 1;
+    @include media-breakpoint-down(sm){
+      right: 16px;
+      bottom: 16px;
+    }
+  }
+  #footer-menu{
+    nav{
+      ul{
+        li{
+          font-size: 12px;
+        }
+      }
+    }
+  }
+  #copy-right{
+    font-size: 10px;
+  }
 }
 
-.star_btn{
+
+/* button */
+.circle_btn{
+  color: #999;
   border: 0;
   transition: .3s;
   padding: 0;
@@ -143,25 +240,43 @@ main{
   text-align: center;
   border-radius: 100%;
   box-shadow: 0px 0px 2px 2px rgba(0, 0, 0, .1);
-  position: absolute;
-  left: 36px;
-  top: 146px;
   font-size: 16px;
   line-height: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  &:hover{
+    text-decoration: none;
+    color: #000;
+  }
 }
 
-.star_btn:hover{
-  font-size: 21px;
-  transition: .3s;
+.add_star{
+  color: #dfdfdf;
 }
 
-
-.main_col{
-  width: calc(100% - 340px);
+.remove_star{
+  color: #f6a12e;
+  &:hover{
+    color: #f6a12e;
+  }
 }
 
-aside{
-  width: 300px;
+.star_btn{
+  position: absolute;
+  left: 40px;
+  top: 140px;
+  font-size: 16px;
+  line-height: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  &:hover{
+    text-decoration: none;
+  }
+  @include media-breakpoint-down(sm){
+    top: 48%;
+  }
 }
 
 

@@ -1,3 +1,8 @@
+<% content_for(:title, @user.name) %>
+<% content_for(:body_class, 'user') %>
+<% content_for(:body_id, 'show') %>
+
+
 <h1><%= @user.name %></h1>
 
 <%= render 'marks/marks', marks: @user.marks %>

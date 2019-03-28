@@ -1,2 +1,6 @@
+<% content_for(:title, 'マイリスト') %>
+<% content_for(:body_class, 'star') %>
+<% content_for(:body_id, 'index') %>
+
 <h1>マイリスト</h1>
 <%= render 'stars', stars: @stars %>

@@ -1,22 +1,13 @@
+<% content_for(:title, @category.name) %>
+<% content_for(:body_class, 'category') %>
+<% content_for(:body_id, 'show') %>
+
 <h1><%= @category.name %></h1>
 
-<div class="d-flex flex-row-reverse justify-content-between">
+<div class="d-block d-md-flex flex-row-reverse justify-content-between">
   
   <aside>
-    <% if @categories.any? %>
-    
-      <nav class="list-group">
-  			<div class="list-group-item list-group-item-action bg-primary text-white">
-  		    カテゴリー
-  		  </div>
-  		  <% @categories.each do |category| %>
-  		    <%= link_to category.name, '/marks/' + category.slug, class: 'list-group-item list-group-item-action text-dark' %>
-  		  <% end %>
-  		</nav>
-
-    <% else %>
-      <p>まだカテゴリーはありません。</p>
-    <% end %>
+    <%= render 'categories', categories: @categories %>
   </aside>
   
   <div class="main_col">

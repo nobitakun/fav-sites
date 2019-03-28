@@ -1,0 +1,12 @@
+<%= form_for(@list) do |f| %>
+
+  <%= render 'shared/error_messages', object: f.object %>
+
+  <div class="form-group">
+    <%= f.label :name, 'セット名' %>
+    <%= f.text_field :name, class: 'form-control' %>
+  </div>
+  
+  <%= f.submit '登録', class: 'btn btn-secondary btn-block' %>
+  
+<% end %>

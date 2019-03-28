@@ -1,127 +1,124 @@
+<% if site_title = Setting.find_by(slug: 'site_title') %>
+  <% content_for(:title, site_title.content.present? ? site_title.content.html_safe : '') %>
+<% end %>
+<% content_for(:body_class, 'home') %>
+<% content_for(:body_id, 'home') %>
+
 <% if logged_in? %>
-  <h1><%= current_user.name %> さん</h1>
-  
-  <h2>マイリスト</h2>
-  
-  <%= render 'stars/stars', stars: @stars %>
-  
-  <h2>ブックマークセット</h2>
+
+  <section>
+    <h1><i class="fa fa-th-list mr-2"></i>TOPサイト</h1>
+    <div class="card mb-5">
+      <div class="card-body">
+        <a href="#" class="badge badge-info p-3">amazon</a>
+        <a href="#" class="badge badge-info p-3">楽天市場</a>
+        <a href="#" class="badge badge-info p-3">価格.com</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="mb-5">
+    <h1><i class="fa fa-star mr-2"></i>マイリスト</h1>
+    <%= render 'stars/stars', stars: @stars %>
+  </section>
   
   <% if @lists.any? %>
-  
-  <ul>
-    <% @lists.each do |list| %>
-      <li><%= list.name %><% list.user.name %></li>
-    <% end %>
-  </ul>
-  
-  <% else %>
-    <p>まだセットを作成していません。</p>
-  <% end %>
-  
-  <!-- Button trigger modal -->
-  <button type="button" class="btn btn-primary mb-5" data-toggle="modal" data-target="#addListModal">
-    セット作成
-  </button>
-  
-  <!-- Modal -->
-  <div class="modal fade" id="addListModal" tabindex="-1" role="dialog" aria-labelledby="addListModalList" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="addListModalList">ブックマークセットを作成</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <%= form_tag lists_path(@lists, id: current_user.id) do %>
-          <div class="modal-body">
-            <div class="form-group">
-              <%= label :name, 'セット名' %>
-              <%= text_field :list, :name, class: 'form-control' %>
-            </div>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">閉じる</button>
-            <%= submit_tag '登録', class: 'btn btn-primary' %>
-          </div>
-        <% end %>
-      </div>
-    </div>
-  </div>
-  
-  <h2>あなたが投稿したブックマーク</h2>
-  
-  <% if @marks.any? %>
-  <ul class="mark_archive_list d-flex flex-wrap">
-    <% @marks.each do |mark| %>
-      <li class="mr-4 mb-4" id="<%= mark.id %>">
-        <a class="url_link mb-2 hover" href="<%= mark.url %>">
-          <%= image_tag 'https://s.wordpress.com/mshots/v1/' + mark.url + '?w=640&h=480', class: 'thumb' %>
-          <%= image_tag 'https://www.google.com/s2/favicons?domain=' + mark.url, class: 'favicon' %>
-        </a>
-        <p class="mb-0"><%= link_to mark.title, mark.url, class: 'title' %></p>
-        <p class="url"><%= link_to mark.url, mark.url %></p>
-        
-        <% if logged_in? %>
-          <% unless current_user.stars.find_by(mark_id: mark.id) %>
-            <%= form_for(current_user.stars.build) do |f| %>
-              <%= hidden_field_tag :mark_id, mark.id %>
-              <%= hidden_field_tag :user_id, current_user.id %>
-              <%= button_tag(sanitize('<i class="fa fa-star"></i>'), class: 'add_star star_btn') %>
-            <% end %>
+    <section class="mb-5">
+      <h1><i class="fa fa-th-large mr-2"></i>ブックマークセット</h1>
+    
+      <% if @lists.any? %>
+      
+      <ul class="mb-3">
+        <% @lists.each do |list| %>
+          <h2><i class="fa fa-tag mr-2"></i><%= list.name %></h2>
+          <% if list.stars.any? %>
+            <%= render 'stars/stars', stars: list.stars %>
           <% else %>
-            <%= form_for(current_user.stars.find_by(mark_id: mark.id), html: { method: :delete }) do |f| %>
-              <%= button_tag(sanitize('<i class="fa fa-star"></i>'), class: 'remove_star star_btn') %>
-            <% end %>
+            <p>まだブックマークがセットに追加されていません。</p>
           <% end %>
-          
+          <%#= link_to list.name, list_path(id: current_user.id, list_id: list.id) %><%#= link_to '編集', edit_list_path(id: list.user.id, list_id: list.id), class: '' %>
         <% end %>
-        
-      </li>
-    <% end %>
-      <li>
-        <button class="add_mark_btn hover" data-toggle="modal" data-target="#addMarkModal"><i class="fa fa-plus-circle"></i></button>
-      </li>
-  </ul>
-<% else %>
-  <p>まだブックマークはありません。</p>
-  <ul class="mark_archive_list d-flex flex-wrap">
-    <li>
-      <button class="add_mark_btn hover" data-toggle="modal" data-target="#addMarkModal"><i class="fa fa-plus-circle"></i></button>
-    </li>
-  </ul>
-<% end %>
-
-  <!-- Modal -->
-  <div class="modal fade" id="addMarkModal" tabindex="-1" role="dialog" aria-labelledby="addMarkModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="addMarkModalLabel">ブックマーク追加</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <%= form_for(@mark) do |f| %>
-          <div class="modal-body">
-
-            <div class="form-group">
-              <%= f.label :url, 'URL' %>
-              <%= f.text_field :url, class: 'form-control' %>
+      </ul>
+      
+      <% else %>
+        <p>まだセットを作成していません。</p>
+      <% end %>
+      
+      <!-- Button trigger modal -->
+      <button type="button" class="btn btn-outline-info mb-5" data-toggle="modal" data-target="#addListModal">
+        セット作成
+      </button>
+      
+      <!-- Modal -->
+      <div class="modal fade" id="addListModal" tabindex="-1" role="dialog" aria-labelledby="addListModalList" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="addListModalList">ブックマークセットを作成</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
             </div>
-
+            <%= form_tag lists_path(@lists, id: current_user.id) do %>
+              <div class="modal-body">
+                <div class="form-group">
+                  <%= label :name, 'セット名' %>
+                  <%= text_field :list, :name, class: 'form-control' %>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-light" data-dismiss="modal">閉じる</button>
+                <%= submit_tag '登録', class: 'btn btn-secondary' %>
+              </div>
+            <% end %>
           </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">閉じる</button>
-            <%= f.submit '登録', class: 'btn btn-primary' %>
-          </div>
-        <% end %>
+        </div>
       </div>
-    </div>
-  </div>
+    </section>
+  <% end %>
+
+  <section class="mb-5">
+    <h1><i class="fa fa-bookmark mr-2"></i>あなたが投稿したブックマーク</h1>
+    <%= render 'marks/marks', marks: @marks %>
+    <!-- Modal Start-->
+    <div class="modal fade" id="addMarkModal" tabindex="-1" role="dialog" aria-labelledby="addMarkModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="addMarkModalLabel">ブックマーク追加</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <%= form_for(@mark) do |f| %>
+            <div class="modal-body">
+  
+              <div class="form-group">
+                <%= f.label :url, 'URL' %>
+                <%= f.text_field :url, class: 'form-control' %>
+              </div>
+  
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-light" data-dismiss="modal">閉じる</button>
+              <%= f.submit '登録', class: 'btn btn-secondary' %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div><!-- .modal -->
+    <!-- Modal End-->
+  </section>
 
 <% else %>
-  <h1>初めての方はユーザー登録をしてください</h1>
-  <%= link_to 'ユーザー登録', signup_path, class: 'btn btn-lg btn-primary' %>
+  <section class="jumbotron text-center bg-white">
+    <div class="container">
+      <h1 class="jumbotron-heading h1 mb-4">ブックマーク管理をより便利に</h1>
+      <p class="lead text-muted mb-5">あなただけのブックマークセットを登録したり、他のユーザーのお気に入りサイトを見ることができます。</p>
+      <%= link_to 'ユーザー登録', signup_path, class: 'btn btn-lg btn-outline-info' %>
+    </div>
+  </section>
+  
+  <h1><i class="fa fa-bookmark mr-2"></i>新着ブックマーク</h1>
+  <%= render 'marks/marks', marks: @marks %>
 <% end %>

@@ -1,32 +1,46 @@
 <% if marks.any? %>
   <ul class="mark_archive_list d-flex flex-wrap">
     <% marks.each do |mark| %>
-      <li class="mr-4 mb-4" id="<%= mark.id %>">
-        <a class="url_link mb-2 hover" href="<%= mark.url %>">
+      <li class="mr-0 mr-md-4 mb-4" id="<%= mark.id %>">
+        
+        <a class="thumb_area url_link mb-2 hover" href="<%= mark.url %>">
           <%= image_tag 'https://s.wordpress.com/mshots/v1/' + mark.url + '?w=640&h=480', class: 'thumb' %>
           <%= image_tag 'https://www.google.com/s2/favicons?domain=' + mark.url, class: 'favicon' %>
         </a>
+        
         <p class="mb-0"><%= link_to mark.title, mark.url, class: 'title' %></p>
         <p class="url"><%= link_to mark.url, mark.url %></p>
         
         <% if logged_in? %>
           <% unless current_user.stars.find_by(mark_id: mark.id) %>
-            <%= form_for(current_user.stars.build) do |f| %>
+            <%= form_tag stars_path(current_user.stars.build, id: current_user.id) do %>
               <%= hidden_field_tag :mark_id, mark.id %>
               <%= hidden_field_tag :user_id, current_user.id %>
-              <%= button_tag(sanitize('<i class="fa fa-star"></i>'), class: 'add_star star_btn') %>
+              <%= button_tag(sanitize('<i class="fa fa-star"></i>'), class: 'add_star star_btn circle_btn') %>
             <% end %>
           <% else %>
-            <%= form_for(current_user.stars.find_by(mark_id: mark.id), html: { method: :delete }) do |f| %>
-              <%= button_tag(sanitize('<i class="fa fa-star"></i>'), class: 'remove_star star_btn') %>
-            <% end %>
+            <% star = current_user.stars.find_by(mark_id: mark.id) %>
+            <%= link_to sanitize('<i class="fa fa-star"></i>'), star_path(id: current_user.id, star_id: star.id), method: :delete, class: 'remove_star star_btn circle_btn' %>
           <% end %>
-          
         <% end %>
         
       </li>
     <% end %>
+      <% if logged_in? && controller.controller_name == 'static_pages' && controller.action_name == 'home'%>
+        <li>
+          <button class="add_mark_btn hover" data-toggle="modal" data-target="#addMarkModal"><i class="fa fa-plus-circle"></i></button>
+        </li>
+      <% end %>
   </ul>
 <% else %>
   <p>まだブックマークはありません。</p>
+  <% if logged_in? && controller.controller_name == 'static_pages' && controller.action_name == 'home'%>
+    <ul class="mark_archive_list d-flex flex-wrap">
+      <li>
+        <button class="add_mark_btn hover" data-toggle="modal" data-target="#addMarkModal"><i class="fa fa-plus-circle"></i></button>
+      </li>
+    </ul>
+  <% end %>
 <% end %>
+
+

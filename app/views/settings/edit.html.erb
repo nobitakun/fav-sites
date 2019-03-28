@@ -1,0 +1,18 @@
+<% content_for(:title, '設定の項目を編集') %>
+<% content_for(:body_class, 'setting') %>
+<% content_for(:body_id, 'edit') %>
+
+<h1><%= @setting.label %>を編集</h1>
+
+<%= form_for @setting, class: '' do |f| %>
+    
+  <%= render 'shared/error_messages', object: f.object %>
+  
+  <div class="form-group">
+    <%= f.label :content, '値' %>
+    <%= f.text_area :content, class: 'form-control', rows: 10 %>
+  </div>
+
+  <%= f.submit '編集', class: 'btn btn-primary btn-block' %>
+  
+<% end %>

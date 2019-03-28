@@ -1,0 +1,31 @@
+<%= form_for(@user) do |f| %>
+
+  <%= render 'shared/error_messages', object: f.object %>
+
+  <div class="form-group">
+    <%= f.label :name, 'ユーザー名' %>
+    <%= f.text_field :name, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :email, 'E-mail' %>
+    <%= f.email_field :email, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :password, 'パスワード' %>
+    <%= f.password_field :password, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :password_confirmation, 'パスワード再入力' %>
+    <%= f.password_field :password_confirmation, class: 'form-control' %>
+  </div>
+  
+  <% if controller.controller_name == 'users' && controller.action_name == 'new' %>
+    <%= f.submit 'ユーザー登録', class: 'btn btn-secondary btn-block' %>
+  <% elsif controller.controller_name == 'users' && controller.action_name == 'edit' %>
+    <%= f.submit '登録', class: 'btn btn-secondary btn-block' %>
+  <% end %>
+  
+<% end %>

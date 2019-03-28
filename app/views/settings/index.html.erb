@@ -1,0 +1,19 @@
+<% content_for(:title, '設定の項目一覧') %>
+<% content_for(:body_class, 'setting') %>
+<% content_for(:body_id, 'index') %>
+
+<h1>サイト設定</h1>
+<% if @settings.any? %>
+  <% @settings.each do |setting| %>
+    <div class="card mb-3">
+      <dl class="card-body mb-0">
+        <dt class="mb-2"><%= setting.label %> (<%= link_to '編集', edit_setting_path(setting) %>)</dt>
+        <dd><%= setting.content %></dd>
+      </dl>
+    </div>
+  <% end %>
+<% end %>
+
+<% if root_logged_in? %>
+  <%= link_to '設定項目追加', new_setting_path, class: 'btn btn-outline-info' %>
+<% end %>

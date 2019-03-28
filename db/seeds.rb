@@ -29,8 +29,14 @@ Category.create(name: 'エンターテイメント', slug: 'entertainment')
 Category.create(name: 'コスメ', slug: 'cosme')
 Category.create(name: 'ファッション', slug: 'fasion')
 
+Setting.create(slug: 'site_title', label: 'サイトタイトル', content: 'タイトル')
+Setting.create(slug: 'home_meta_kayword', label: 'metaキーワード', content: 'キーワード1, キーワード2, キーワード3')
+Setting.create(slug: 'home_meta_description', label: 'metaディスクリプション', content: 'ディスクリプションが入ります。')
+Setting.create(slug: 'header_tag', label: 'ヘッダータグ', content: "<script>console.log('header_tag');</script>")
+Setting.create(slug: 'footer_tag', label: 'フッタータグ', content: "<script>console.log('footer_tag');</script>")
 
 
+Setting.create(slug: 'site_title', label: 'サイト1タイトル', content: 'タイトル')
 
 url = 'https://www.youtube.com/'
 agent = Mechanize.new
@@ -79,15 +85,3 @@ agent = Mechanize.new
 page = agent.get(url)
 title = page.title
 admin_user.marks.create(title: title, url: url, category_ids: [2])
-
-# url = 'http://zozo.jp/'
-# agent = Mechanize.new
-# page = agent.get(url)
-# title = page.title
-# admin_user.marks.create(title: title, url: url, category_ids: [6])
-
-# url = 'https://www.cosme.net/'
-# agent = Mechanize.new
-# page = agent.get(url)
-# title = page.title
-# admin_user.marks.create(title: title, url: url, category_ids: [5])

@@ -1,0 +1,56 @@
+<% content_for(:title, 'マイブックマークの編集') %>
+<% content_for(:body_class, 'star') %>
+<% content_for(:body_id, 'edit') %>
+
+<h1>リスト編集</h1>
+
+<div class="row">
+  
+  <div class="col-7">
+    <%= image_tag 'https://s.wordpress.com/mshots/v1/' + @star.mark.url + '?w=640&h=480', class: 'mb-3' %>
+    <h2><%= @star.mark.title %></h2>
+    <p><%= @star.mark.url %></p>
+  </div>
+  
+  <div class="col-5">
+    <%= form_for @star, class: '' do |f| %>
+    
+      <%= render 'shared/error_messages', object: f.object %>
+      
+      <div class="form-group">
+        <%= f.label :label, '表示名' %>
+        <%= f.text_field :label, class: 'form-control' %>
+      </div>
+      
+      <p>ブックマークセットに追加</p>
+      
+      <% if current_user.lists.any? %>
+        <div id="detail-association-insertion-point">
+          <%= f.fields_for :list_stars do |a| %>
+            <%= render 'list_star_fields', f: a %>
+          <% end %>
+        </div>
+        <%= link_to_add_association 'セットを追加', f, :list_stars,
+          class: 'btn btn-outline-info mb-4',
+          data: {
+            association_insertion_node: '#detail-association-insertion-point',
+            association_insertion_method: 'append' }
+         %>
+      <% else %>
+        <%= link_to 'まずはブックマークセットを作成してください。', new_list_path, class: 'btn btn-outline-info btn-block mb-4' %>
+      <% end %>
+      
+      
+          
+      
+      <%= f.submit '編集', class: 'btn btn-secondary btn-block' %>
+    
+    <% end %>
+  </div>
+  
+</div>
+
+
+
+
+

@@ -1,0 +1,17 @@
+<% content_for(:title, @category.name + 'のブックマーク一覧') %>
+<% content_for(:body_class, 'marks') %>
+<% content_for(:body_id, 'category') %>
+
+<h1><%= @category.name %></h1>
+
+<div class="d-block d-md-flex flex-row-reverse justify-content-between">
+  
+  <aside>
+    <%= render 'categories/categories', categories: @categories %>
+  </aside>
+  
+  <div class="main_col">
+    <%= render 'marks/marks', marks: @marks %>
+  </div>
+  
+</div>

@@ -1,2 +1,7 @@
-<h1>Lists#show</h1>
-<p>Find me in app/views/lists/show.html.erb</p>
+<% content_for(:title, @list.name) %>
+<% content_for(:body_class, 'list') %>
+<% content_for(:body_id, 'show') %>
+
+<h1><%= @list.name %></h1>
+
+<%= render 'stars/stars', stars: @list.stars %>

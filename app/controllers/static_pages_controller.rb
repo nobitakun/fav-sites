@@ -8,6 +8,8 @@ class StaticPagesController < ApplicationController
       
       @list = current_user.lists.build
       @lists = current_user.lists.order('created_at DESC')
+    else
+      @marks = Mark.order(created_at: :desc)
     end
   end
   

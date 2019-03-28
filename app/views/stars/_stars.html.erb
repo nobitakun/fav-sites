@@ -2,16 +2,41 @@
   <ul class="mark_archive_list d-flex flex-wrap">
     <% stars.each do |star| %>
       <li class="mr-4 mb-4" id="<%= star.mark.id %>">
-        <a class="url_link mb-2 hover" href="<%= star.mark.url %>">
+        <div class="thumb_area mb-2">
           <%= image_tag 'https://s.wordpress.com/mshots/v1/' + star.mark.url + '?w=640&h=480', class: 'thumb' %>
           <%= image_tag 'https://www.google.com/s2/favicons?domain=' + star.mark.url, class: 'favicon' %>
-        </a>
-        <p class="mb-0"><%= link_to star.mark.title, star.mark.url, class: 'title' %></p>
+          <div class="link_btn_area">
+            <div class="d-flex justify-content-around">
+              <%= link_to sanitize('<i class="fa fa-link"></i>'), star.mark.url, class: 'link' %>
+              <%= link_to sanitize('<i class="fa fa-external-link"></i>'), star.mark.url, { class: 'external', target: '_blank'} %>
+              <%= link_to sanitize('<i class="fa fa-window-maximize"></i>'), 'javascript:void(0);', onclick: "window.open('#{star.mark.url}', '_blank', 'width=800,height=600');", class: 'window' %>
+            </div>
+          </div>
+          
+        </div>
+        <% if star.label.present? %>
+          <p class="mb-0"><%= link_to star.label, star.mark.url, class: 'title' %></p>
+        <% else %>
+          <p class="mb-0"><%= link_to star.mark.title, star.mark.url, class: 'title' %></p>
+        <% end %>
         <p class="url"><%= link_to star.mark.url, star.mark.url %></p>
-        
+        <%= link_to sanitize('<i class="fa fa-ellipsis-h"></i>'), edit_star_path(id: current_user.id, star_id: star.id), class: 'circle_btn setting' %>
       </li>
     <% end %>
   </ul>
 <% else %>
   <p>まだマイリストに登録しているブックマークはありません。</p>
 <% end %>
+
+<script>
+  $(function(){
+    $('.thumb_area').hover(
+      function(){
+        $(this).find('.link_btn_area').fadeIn('fast');
+        console.log('hoge');
+      },function(){
+        $(this).find('.link_btn_area').fadeOut('fast');
+      }
+    );
+  })
+</script>

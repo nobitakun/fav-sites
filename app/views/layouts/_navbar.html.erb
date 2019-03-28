@@ -1,4 +1,4 @@
-<nav class="navbar navbar-dark bg-dark navbar-expand-md fixed-top">
+<nav class="navbar navbar-light bg-light navbar-expand-md fixed-top border-bottom">
   <a class="navbar-brand" href="/">FAV SITES</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbars" aria-controls="navbars" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -8,57 +8,57 @@
     <ul class="navbar-nav mr-auto">
       <% if root_logged_in? %>
         <li class="nav-item">
-          <%= link_to(content_tag(:i, ' DB図', class: 'fa fa-database'), dbmap_path, class: 'nav-link') %>
-        </li>
-        <li class="nav-item">
-          <%= link_to(content_tag(:i, ' カテゴリー', class: 'fa fa-database'), categories_path, class: 'nav-link') %>
+          <%= link_to(content_tag(:i, '', class: 'fa fa-database mr-2') + 'DB図', dbmap_path, class: 'nav-link text-dark') %>
         </li>
       <% end %>
       <% if admin_logged_in? %>
         <li class="nav-item">
-          <%= link_to(content_tag(:i, ' ユーザー一覧', class: 'fa fa-group'), users_path, class: 'nav-link') %>
+          <%= link_to(content_tag(:i, '', class: 'fa fa-cog mr-2') + 'サイト設定', settings_path, class: 'nav-link text-dark') %>
+        </li>
+        <li class="nav-item">
+          <%= link_to(content_tag(:i, '', class: 'fa fa-list mr-2') + 'カテゴリー一覧', categories_path, class: 'nav-link text-dark') %>
+        </li>
+        <li class="nav-item">
+          <%= link_to(content_tag(:i, '', class: 'fa fa-plus-circle mr-2') + 'カテゴリー登録', new_category_path, class: 'nav-link text-dark') %>
         </li>
       <% end %>
       <li class="nav-item">
-        <%= link_to(content_tag(:i, ' 新着ブックマーク一覧', class: 'fa fa-bookmark'), marks_path, class: 'nav-link') %>
+        <%= link_to(content_tag(:i, '', class: 'fa fa-bookmark mr-2') + 'ブックマーク検索', marks_path, class: 'nav-link text-dark') %>
       </li>
       <% if logged_in? %>
-        <li class="nav-item">
-          <%= link_to(content_tag(:i, ' マイリスト', class: 'fa fa-star'), stars_path, class: 'nav-link') %>
-        </li>
-        <li class="nav-item">
-          <%= link_to(content_tag(:i, ' ブックマークセット', class: 'fa fa-th-large'), stars_path, class: 'nav-link') %>
-        </li>
       <% end %>
     </ul>
     <ul class="nav navbar-nav navbar-right">
       <% if logged_in? %>
         <li class="nav-item d-md-none">
-          <%= link_to(content_tag(:i, ' マイページ', class: 'fa fa-address-card'), user_path(current_user), class: 'nav-link') %>
+          <%= link_to(content_tag(:i, '', class: 'fa fa-star mr-2') + 'マイリスト', stars_path(id: current_user.id), class: 'nav-link text-dark') %>
         </li>
         <li class="nav-item d-md-none">
-          <%= link_to(content_tag(:i, ' プロフィール編集', class: 'fa fa-cog'), edit_user_path(current_user), class: 'nav-link') %>
+          <%= link_to(content_tag(:i, '', class: 'fa fa-th-large mr-2') + 'ブックマークセット', lists_path(id: current_user.id), class: 'nav-link text-dark') %>
         </li>
         <li class="nav-item d-md-none">
-          <%= link_to(content_tag(:i, ' ログアウト', class: 'fa fa-sign-out'), logout_path, method: :delete, class: 'nav-link') %>
+          <%= link_to(content_tag(:i, '', class: 'fa fa-cog mr-2') + 'プロフィール編集', edit_user_path(current_user), class: 'nav-link text-dark') %>
+        </li>
+        <li class="nav-item d-md-none">
+          <%= link_to(content_tag(:i, '', class: 'fa fa-sign-out mr-2') + 'ログアウト', logout_path, method: :delete, class: 'nav-link text-dark') %>
         </li>
       
         <li class="nav-item d-none d-md-block dropdown">
-          <a class="nav-link dropdown-toggle" href="/" id="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">ログイン中: <%= current_user.name %> さん</a>
+          <a class="nav-link dropdown-toggle text-dark" href="/" id="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user-circle-o mr-2"></i><%= current_user.name %> さん</a>
           <div class="dropdown-menu">
             <h2><%= current_user.name %></h2>
-            <%= link_to(content_tag(:i, ' マイページ', class: 'fa fa-address-card'), user_path(current_user), class: 'dropdown-item') %>
-            <%= link_to(content_tag(:i, ' プロフィール編集', class: 'fa fa-cog'), edit_user_path(current_user), class: 'dropdown-item') %>
-            <%= link_to(content_tag(:i, ' ログアウト', class: 'fa fa-sign-out'), logout_path, method: :delete, class: 'dropdown-item') %>
+            <%= link_to(content_tag(:i, '', class: 'fa fa-star mr-2') + 'マイリスト', stars_path(id: current_user.id), class: 'dropdown-item') %>
+            <%= link_to(content_tag(:i, '', class: 'fa fa-th-large mr-2') + 'ブックマークセット', lists_path(id: current_user.id), class: 'dropdown-item') %>        <%= link_to(content_tag(:i, '', class: 'fa fa-cog mr-2') + 'プロフィール編集', edit_user_path(current_user), class: 'dropdown-item') %>
+            <%= link_to(content_tag(:i, '', class: 'fa fa-sign-out mr-2') + 'ログアウト', logout_path, method: :delete, class: 'dropdown-item') %>
           </div>
         </li>
         
       <% else %>
         <li class="nav-item">
-          <%= link_to(content_tag(:i, ' ユーザー登録', class: 'fa fa-user-plus'), signup_path, class: 'nav-link') %>
+          <%= link_to(content_tag(:i, '', class: 'fa fa-user-plus mr-2') + 'ユーザー登録', signup_path, class: 'nav-link text-dark') %>
         </li>
         <li class="nav-item">
-          <%= link_to(content_tag(:i, ' ログイン', class: 'fa fa-sign-in'), login_path, class: 'nav-link') %>
+          <%= link_to(content_tag(:i, '', class: 'fa fa-sign-in mr-2') + 'ログイン', login_path, class: 'nav-link text-dark') %>
         </li>
       <% end %>
     </ul>

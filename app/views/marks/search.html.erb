@@ -1,0 +1,19 @@
+<% content_for(:title, 'ブックマーク検索') %>
+<% content_for(:body_class, 'marks') %>
+<% content_for(:body_id, 'search') %>
+
+<%= render 'search_form' %>
+
+<h1>検索結果</h1>
+
+<div class="d-block d-md-flex flex-row-reverse justify-content-between">
+  
+  <aside>
+    <%= render 'categories/categories', categories: @categories %>
+  </aside>
+  
+  <div class="main_col">
+    <%= render 'marks', marks: @marks %>
+  </div>
+  
+</div>
