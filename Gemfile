@@ -45,6 +45,8 @@ gem 'mechanize'
 
 gem 'cocoon'
 
+gem 'unicorn', '5.4.1'
+
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
