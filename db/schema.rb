@@ -57,7 +57,7 @@ ActiveRecord::Schema.define(version: 20190325184028) do
   create_table "settings", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
     t.string "slug"
     t.string "label"
-    t.string "content"
+    t.text "content"
     t.integer "order_num"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

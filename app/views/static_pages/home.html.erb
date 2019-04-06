@@ -6,17 +6,6 @@
 
 <% if logged_in? %>
 
-  <section>
-    <h1><i class="fa fa-th-list mr-2"></i>TOPサイト</h1>
-    <div class="card mb-5">
-      <div class="card-body">
-        <a href="#" class="badge badge-info p-3">amazon</a>
-        <a href="#" class="badge badge-info p-3">楽天市場</a>
-        <a href="#" class="badge badge-info p-3">価格.com</a>
-      </div>
-    </div>
-  </section>
-
   <section class="mb-5">
     <h1><i class="fa fa-star mr-2"></i>マイリスト</h1>
     <%= render 'stars/stars', stars: @stars %>

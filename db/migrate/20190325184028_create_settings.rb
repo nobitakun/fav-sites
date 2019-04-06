@@ -3,7 +3,7 @@ class CreateSettings < ActiveRecord::Migration[5.1]
     create_table :settings do |t|
       t.string :slug
       t.string :label
-      t.string :content
+      t.text :content
       t.integer :order_num
 
       t.timestamps
