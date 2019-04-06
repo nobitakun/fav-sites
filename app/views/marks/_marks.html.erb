@@ -11,19 +11,6 @@
         <p class="mb-0"><%= link_to mark.title, mark.url, class: 'title' %></p>
         <p class="url"><%= link_to mark.url, mark.url %></p>
         
-        <% if logged_in? %>
-          <% unless current_user.stars.find_by(mark_id: mark.id) %>
-            <%= form_tag stars_path(current_user.stars.build, id: current_user.id) do %>
-              <%= hidden_field_tag :mark_id, mark.id %>
-              <%= hidden_field_tag :user_id, current_user.id %>
-              <%= button_tag(sanitize('<i class="fa fa-star"></i>'), class: 'add_star star_btn circle_btn') %>
-            <% end %>
-          <% else %>
-            <% star = current_user.stars.find_by(mark_id: mark.id) %>
-            <%= link_to sanitize('<i class="fa fa-star"></i>'), star_path(id: current_user.id, star_id: star.id), method: :delete, class: 'remove_star star_btn circle_btn' %>
-          <% end %>
-        <% end %>
-        
       </li>
     <% end %>
       <% if logged_in? && controller.controller_name == 'static_pages' && controller.action_name == 'home'%>

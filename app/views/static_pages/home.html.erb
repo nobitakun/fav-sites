@@ -6,11 +6,6 @@
 
 <% if logged_in? %>
 
-  <section class="mb-5">
-    <h1><i class="fa fa-star mr-2"></i>マイリスト</h1>
-    <%= render 'stars/stars', stars: @stars %>
-  </section>
-  
   <% if @lists.any? %>
     <section class="mb-5">
       <h1><i class="fa fa-th-large mr-2"></i>ブックマークセット</h1>

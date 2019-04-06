@@ -28,15 +28,6 @@ ActiveRecord::Schema.define(version: 20190325184028) do
     t.index ["mark_id"], name: "index_category_marks_on_mark_id"
   end
 
-  create_table "list_stars", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
-    t.bigint "list_id"
-    t.bigint "star_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["list_id"], name: "index_list_stars_on_list_id"
-    t.index ["star_id"], name: "index_list_stars_on_star_id"
-  end
-
   create_table "lists", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
     t.bigint "user_id"
     t.string "name"
@@ -48,6 +39,8 @@ ActiveRecord::Schema.define(version: 20190325184028) do
   create_table "marks", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
     t.string "title"
     t.string "url"
+    t.boolean "private"
+    t.boolean "search_permit"
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -63,16 +56,6 @@ ActiveRecord::Schema.define(version: 20190325184028) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "stars", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
-    t.bigint "mark_id"
-    t.bigint "user_id"
-    t.string "label"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["mark_id"], name: "index_stars_on_mark_id"
-    t.index ["user_id"], name: "index_stars_on_user_id"
-  end
-
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
     t.string "name"
     t.string "email"
@@ -85,10 +68,6 @@ ActiveRecord::Schema.define(version: 20190325184028) do
 
   add_foreign_key "category_marks", "categories"
   add_foreign_key "category_marks", "marks"
-  add_foreign_key "list_stars", "lists"
-  add_foreign_key "list_stars", "stars"
   add_foreign_key "lists", "users"
   add_foreign_key "marks", "users"
-  add_foreign_key "stars", "marks"
-  add_foreign_key "stars", "users"
 end

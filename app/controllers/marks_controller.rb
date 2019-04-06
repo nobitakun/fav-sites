@@ -16,7 +16,6 @@ class MarksController < ApplicationController
       @mark.url = @mark.url + '/'
     end
     if @mark.save
-      @star = current_user.stars.create(mark_id: @mark.id, user_id: current_user.id)
       flash[:success] = 'ブックマークを投稿しました。'
       redirect_to root_path
     else
