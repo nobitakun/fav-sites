@@ -14,6 +14,7 @@
 //= require popper
 //= require jquery-ui/widgets/datepicker
 //= require jquery-ui/i18n/datepicker-ja
+//= require jquery-ui/widgets/sortable
 //= require jquery.turbolinks
 //= require rails-ujs
 //= require turbolinks

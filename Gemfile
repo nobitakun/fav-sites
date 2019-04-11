@@ -32,7 +32,11 @@ gem 'bcrypt', '~> 3.1.7'
 
 gem 'dotenv-rails'
 
+gem 'devise'
+
 gem 'kaminari'
+gem 'ranked-model'
+
 gem 'bootstrap', '~> 4.1.1'
 gem 'jquery-rails'
 gem 'jquery-ui-rails'

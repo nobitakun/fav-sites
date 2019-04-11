@@ -6,6 +6,8 @@ ja:
       user:
         name: 名前
         password: パスワード
+        current_password: 現在のパスワード
+        password_confirmation: パスワード再入力
       mark:
         utl: URL
       category:

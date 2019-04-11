@@ -27,6 +27,12 @@ class MarksController < ApplicationController
   def destroy
   end
   
+  def sort
+    mark = Mark.find(params[:mark_id])
+    mark.update(mark_order_params)
+    head :no_content
+  end
+  
   def search
     if params[:keyword].present?
       keyword = params[:keyword]
@@ -55,8 +61,12 @@ class MarksController < ApplicationController
       rescue Timeout::Error 
         title = params[:mark][:url]
       end
-      params.require(:mark).permit(:url).merge(title: title)
+      params.require(:mark).permit(:url, :order_num_position).merge(title: title)
     end
+  end
+  
+  def mark_order_params
+    params.require(:mark).permit(:order_num_position)
   end
   
 end

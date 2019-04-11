@@ -27,13 +27,15 @@
   
   <header>
     <%= render 'layouts/navbar' %>
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
   </header>
 
   <div class="container" id="container">
     <div class="row">
 
       <main role="main" class="col-12">
-        <article class="main-content pt-5">
+        <article class="main-content">
           <%= render 'layouts/flash_messages' %>
           <%= yield %>
         </article>

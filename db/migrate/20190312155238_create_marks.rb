@@ -5,6 +5,8 @@ class CreateMarks < ActiveRecord::Migration[5.1]
       t.string :url
       t.boolean :private
       t.boolean :search_permit
+      t.integer :order_num
+      
       t.references :user, foreign_key: true
       
       t.timestamps
