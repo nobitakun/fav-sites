@@ -16,6 +16,7 @@
 
 <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
 <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"></script>
 
 <% if header_tag = Setting.find_by(slug: 'header_tag') %>
   <%= header_tag.content.present? ? header_tag.content.html_safe : '' %>

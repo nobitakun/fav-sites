@@ -40,6 +40,7 @@ gem 'ranked-model'
 gem 'bootstrap', '~> 4.1.1'
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
+gem 'touchpunch-rails'
 gem 'jquery-turbolinks'
 gem 'font-awesome-rails'
 

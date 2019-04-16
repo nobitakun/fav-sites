@@ -32,6 +32,11 @@
 
 <script>
   $('.sortable').sortable({
+    opacity: 0.7,
+    delay: 200,
+    revert: true,
+    tolerance: "pointer",
+    scrollSensitivity: 100,
     update: function(event, ui){
       item = ui.item;
       item_data = item.data();
