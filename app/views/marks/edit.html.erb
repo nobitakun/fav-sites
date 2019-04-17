@@ -1,0 +1,32 @@
+<% content_for(:title, 'マイブックマークの編集') %>
+<% content_for(:body_class, 'marks') %>
+<% content_for(:body_id, 'edit') %>
+
+<h1>ブックマークの編集</h1>
+
+<div class="row">
+  
+  <div class="col-7">
+    <%= image_tag 'https://s.wordpress.com/mshots/v1/' + @mark.url + '?w=640&h=480', class: 'mb-3' %>
+    <h2><%= @mark.title %></h2>
+    <p><%= @mark.url %></p>
+  </div>
+  
+  <div class="col-5">
+    <%= form_for @mark, class: '' do |f| %>
+    
+      <%= render 'shared/error_messages', object: f.object %>
+      
+      <div class="form-group">
+        <%= f.label :title, 'サイト名' %>
+        <%= f.text_field :title, class: 'form-control' %>
+      </div>
+     
+      <%= f.submit '編集', class: 'btn btn-secondary btn-block' %>
+      <%= link_to '削除', @mark, method: :delete, data: { confirm: '本当に削除してよろしいですか？' }, class: 'btn btn-block btn-danger' %>
+    <% end %>
+    
+    
+  </div>
+  
+</div>

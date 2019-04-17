@@ -38,6 +38,35 @@
     </div><!-- .modal -->
     <!-- Modal End-->
   </section>
+  
+  <script>
+    $('.sortable').sortable({
+      opacity: 0.7,
+      delay: 200,
+      revert: true,
+      tolerance: "pointer",
+      scrollSensitivity: 100,
+      update: function(event, ui){
+        item = ui.item;
+        item_data = item.data();
+        console.log('update');
+        params = { _method: 'put' }
+        params[item_data.modelName] = { order_num_position: item.index() }
+        $.ajax({
+          type: 'POST',
+          url: item_data.updateUrl,
+          dataType: 'json',
+          data: params,
+          success: function(data) {
+            console.log("data send success");
+          },
+          error: function(data) {
+            console.log("data send error");
+          }
+        });
+      }
+    })
+  </script>
 
 <% else %>
   <section class="jumbotron text-center bg-white">

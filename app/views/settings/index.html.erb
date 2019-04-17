@@ -14,6 +14,6 @@
   <% end %>
 <% end %>
 
-<% if root_logged_in? %>
+<% if user_signed_in? && current_user.root %>
   <%= link_to '設定項目追加', new_setting_path, class: 'btn btn-outline-info' %>
 <% end %>

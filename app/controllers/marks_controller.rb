@@ -1,5 +1,7 @@
 class MarksController < ApplicationController
-  before_action :require_user_logged_in, only: [:new, :create, :edit, :update, :destroy]
+  before_action :require_user_logged_in, only: [:new, :create]
+  before_action :correct_user, only: [:edit, :update, :destroy]
+  before_action :set_mark, only: [:edit, :update, :destroy]
   
   def index
     @marks = Mark.order(created_at: :desc)
@@ -24,7 +26,22 @@ class MarksController < ApplicationController
     end
   end
   
+  def edit
+  end
+  
+  def update
+    if @mark.update(edit_mark_params)
+      flash[:success] = '編集しました。'
+      redirect_to root_path
+    else
+      render :edit
+    end
+  end
+  
   def destroy
+    @mark.destroy
+    flash[:success] = '削除しました'
+    redirect_to root_path
   end
   
   def sort
@@ -51,6 +68,18 @@ class MarksController < ApplicationController
   
   private
   
+  def set_mark
+    @mark = Mark.find(params[:id])
+  end
+  
+  def correct_user
+    @mark = Mark.find(params[:id])
+    if @mark.user.id != current_user.id
+      flash[:notice] = "権限がありません"
+      redirect_to root_path
+    end
+  end
+  
   def mark_params
     if params[:mark][:url].match(/\A#{URI::regexp(%w(http https))}\z/)
       require 'mechanize'
@@ -63,6 +92,10 @@ class MarksController < ApplicationController
       end
       params.require(:mark).permit(:url, :order_num_position).merge(title: title)
     end
+  end
+  
+  def edit_mark_params
+    params.require(:mark).permit(:url, :title)
   end
   
   def mark_order_params

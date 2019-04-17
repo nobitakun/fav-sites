@@ -11,6 +11,9 @@
         <p class="mb-0"><%= link_to mark.title, mark.url, class: 'title' %></p>
         <p class="url"><%= link_to mark.url, mark.url %></p>
         
+        <% if user_signed_in? %>
+          <%= link_to sanitize('<i class="fa fa-ellipsis-h"></i>'), edit_mark_path(mark), class: 'circle_btn setting' %>
+        <% end %>
       </li>
     <% end %>
       <% if user_signed_in? && controller.controller_name == 'static_pages' && controller.action_name == 'home'%>
@@ -29,34 +32,4 @@
     </ul>
   <% end %>
 <% end %>
-
-<script>
-  $('.sortable').sortable({
-    opacity: 0.7,
-    delay: 200,
-    revert: true,
-    tolerance: "pointer",
-    scrollSensitivity: 100,
-    update: function(event, ui){
-      item = ui.item;
-      item_data = item.data();
-      console.log('update');
-      params = { _method: 'put' }
-      params[item_data.modelName] = { order_num_position: item.index() }
-      $.ajax({
-        type: 'POST',
-        url: item_data.updateUrl,
-        dataType: 'json',
-        data: params,
-        success: function(data) {
-          console.log("data send success");
-        },
-        error: function(data) {
-          console.log("data send error");
-        }
-      });
-    }
-  })
-</script>
-
 
