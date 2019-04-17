@@ -15,16 +15,8 @@
         <li class="nav-item">
           <%= link_to(content_tag(:i, '', class: 'fa fa-cog mr-2') + 'サイト設定', settings_path, class: 'nav-link text-dark') %>
         </li>
-        <li class="nav-item">
-          <%= link_to(content_tag(:i, '', class: 'fa fa-list mr-2') + 'カテゴリー一覧', categories_path, class: 'nav-link text-dark') %>
-        </li>
-        <li class="nav-item">
-          <%= link_to(content_tag(:i, '', class: 'fa fa-plus-circle mr-2') + 'カテゴリー登録', new_category_path, class: 'nav-link text-dark') %>
-        </li>
       <% end %>
-      <li class="nav-item">
-        <%= link_to(content_tag(:i, '', class: 'fa fa-bookmark mr-2') + 'ブックマーク検索', marks_path, class: 'nav-link text-dark') %>
-      </li>
+
       <% if user_signed_in? %>
       <% end %>
     </ul>
