@@ -8,7 +8,7 @@
     <div class="card mb-3">
       <dl class="card-body mb-0">
         <dt class="mb-2"><%= setting.label %> (<%= link_to '編集', edit_setting_path(setting) %>)</dt>
-        <dd><%= setting.content %></dd>
+        <dd><%= simple_format(h(setting.content)) %></dd>
       </dl>
     </div>
   <% end %>

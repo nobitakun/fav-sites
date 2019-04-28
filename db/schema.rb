@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190406174537) do
+ActiveRecord::Schema.define(version: 20190425065630) do
 
   create_table "categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
     t.string "name"
@@ -57,6 +57,17 @@ ActiveRecord::Schema.define(version: 20190406174537) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "user_configs", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
+    t.bigint "user_id"
+    t.integer "mark_target"
+    t.integer "language_setting"
+    t.string "bg_image"
+    t.integer "col_num"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_user_configs_on_user_id"
+  end
+
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
     t.string "name"
     t.string "email"
@@ -80,4 +91,5 @@ ActiveRecord::Schema.define(version: 20190406174537) do
   add_foreign_key "category_marks", "marks"
   add_foreign_key "lists", "users"
   add_foreign_key "marks", "users"
+  add_foreign_key "user_configs", "users"
 end

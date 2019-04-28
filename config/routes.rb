@@ -10,9 +10,11 @@ Rails.application.routes.draw do
 
   # get 'signup', to: 'users#new'
   
-  devise_for :users
+  devise_for :users, controllers: { registrations: 'users/registrations' }
   
-  resources :lists
+  resources :user_configs, only: [:update]
+  get 'config', to: 'user_configs#edit', as: 'edit_user_config'
+  
   resources :marks do
     put :sort
   end

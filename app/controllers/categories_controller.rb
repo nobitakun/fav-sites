@@ -1,5 +1,5 @@
 class CategoriesController < ApplicationController
-  before_action :require_admin_logged_in, only: [:new, :create, :edit, :destroy]
+  before_action :authenticate_user!, only: [:new, :create, :edit, :destroy]
   before_action :set_category, only: [:show, :edit, :update, :destroy]
   
   def index

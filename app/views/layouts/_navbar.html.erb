@@ -26,7 +26,10 @@
           <%= link_to(content_tag(:i, '', class: 'fa fa-home  mr-2') + 'トップページ',root_path, class: 'nav-link text-dark') %>
         </li>
         <li class="nav-item d-md-none">
-          <%= link_to(content_tag(:i, '', class: 'fa fa-cog mr-2') + 'アカウント情報の変更', edit_user_registration_path, class: 'nav-link text-dark') %>
+          <%= link_to(content_tag(:i, '', class: 'fa fa-user mr-2') + 'アカウント情報の変更', edit_user_registration_path, class: 'nav-link text-dark') %>
+        </li>
+        <li class="nav-item d-md-none">
+          <%= link_to(content_tag(:i, '', class: 'fa fa-cog mr-2') + '設定', edit_user_config_path, class: 'nav-link text-dark') %>
         </li>
         <li class="nav-item d-md-none">
           <%= link_to(content_tag(:i, '', class: 'fa fa-sign-out mr-2') + 'ログアウト', destroy_user_session_path, method: :delete, class: 'nav-link text-dark') %>
@@ -37,7 +40,8 @@
           <div class="dropdown-menu">
             <h2><%= current_user.name %></h2>
             <%= link_to(content_tag(:i, '', class: 'fa fa-home  mr-2') + 'トップページ',root_path, class: 'dropdown-item') %>
-            <%= link_to(content_tag(:i, '', class: 'fa fa-cog mr-2') + 'アカウント情報の変更', edit_user_registration_path, class: 'dropdown-item') %>
+            <%= link_to(content_tag(:i, '', class: 'fa fa-user mr-2') + 'アカウント情報の変更', edit_user_registration_path, class: 'dropdown-item') %>
+            <%= link_to(content_tag(:i, '', class: 'fa fa-cog mr-2') + '設定', edit_user_config_path, class: 'dropdown-item') %>
             <%= link_to(content_tag(:i, '', class: 'fa fa-sign-out mr-2') + 'ログアウト', destroy_user_session_path, method: :delete, class: 'dropdown-item') %>
           </div>
         </li>

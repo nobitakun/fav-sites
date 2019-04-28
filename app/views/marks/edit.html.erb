@@ -6,13 +6,13 @@
 
 <div class="row">
   
-  <div class="col-7">
-    <%= image_tag 'https://s.wordpress.com/mshots/v1/' + @mark.url + '?w=640&h=480', class: 'mb-3' %>
+  <div class="col-12 col-md-7">
+    <%= image_tag 'https://s.wordpress.com/mshots/v1/' + @mark.url + '?w=640&h=480', class: 'mb-3 w-100' %>
     <h2><%= @mark.title %></h2>
     <p><%= @mark.url %></p>
   </div>
   
-  <div class="col-5">
+  <div class="col-12 col-md-5">
     <%= form_for @mark, class: '' do |f| %>
     
       <%= render 'shared/error_messages', object: f.object %>

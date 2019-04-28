@@ -24,6 +24,51 @@
 
 </head>
 
+<% if current_user && current_user.user_config.bg_image %>
+  <style>
+    body{
+      background: url(<%= current_user.user_config.bg_image.url %>) center center;
+      background-size: cover;
+    }
+  </style>
+<% end %>
+
+<% if current_user && current_user.user_config.col_num %>
+  <style>
+    .mark_archive_list{
+      margin-right: -20px;
+    }
+    .mark_archive_list li{
+      width: calc(100% / <%= current_user.user_config.col_num %> - 20px);
+      margin-right: 20px;
+    }
+    @media (max-width: 767.98px) {
+      .mark_archive_list li{
+        width: calc(100% / 2 - 20px);
+      }
+    }
+  </style>
+<% else %>
+  <style>
+    .mark_archive_list{
+      margin-right: -20px;
+    }
+    .mark_archive_list li{
+      width: calc(100% / 4 - 20px);
+      margin-right: 20px;
+    }
+    @media (max-width: 767.98px) {
+      .mark_archive_list li{
+        width: calc(100% / 2 - 20px);
+      }
+    }
+  </style>
+<% end %>
+
+
+
+
+
 <body class="<%= yield(:body_class) %>" id="<%= yield(:body_id) %>">
   
   <header>

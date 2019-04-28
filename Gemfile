@@ -50,6 +50,10 @@ gem 'mechanize'
 
 gem 'cocoon'
 
+gem 'carrierwave'
+gem 'carrierwave-ftp', :require => 'carrierwave/storage/ftp/all'
+gem 'mini_magick'
+
 gem 'unicorn', '5.4.1'
 
 

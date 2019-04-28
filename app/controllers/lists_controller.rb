@@ -1,5 +1,5 @@
 class ListsController < ApplicationController
-  before_action :require_user_logged_in, only: [:index, :new, :create, :edit, :update, :destroy]
+  before_action :authenticate_user!, only: [:index, :new, :create, :edit, :update, :destroy]
   
   def index
     @lists = current_user.lists.order(created_at: :desc)

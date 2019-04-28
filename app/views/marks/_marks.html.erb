@@ -1,15 +1,15 @@
 <% if marks.any? %>
   <ul class="mark_archive_list d-flex flex-wrap sortable">
     <% marks.each do |mark| %>
-      <li class="mr-0 mr-md-4 mb-4" id="<%= mark.id %>" data-model-name="mark" data-update-url="<%= mark_sort_url(mark) %>">
+      <li class="mb-4" id="<%= mark.id %>" data-model-name="mark" data-update-url="<%= mark_sort_url(mark) %>">
         
-        <a class="thumb_area url_link mb-2 hover" href="<%= mark.url %>">
+        <a class="thumb_area url_link mb-2 hover" href="<%= mark.url %>" <%= 'target="_blank"' if current_user && current_user.user_config.mark_target == 0 %>>
           <%= image_tag 'https://s.wordpress.com/mshots/v1/' + mark.url + '?w=640&h=480', class: 'thumb' %>
           <%= image_tag 'https://www.google.com/s2/favicons?domain=' + mark.url, class: 'favicon' %>
         </a>
         
-        <p class="mb-0"><%= link_to mark.title, mark.url, class: 'title' %></p>
-        <p class="url"><%= link_to mark.url, mark.url %></p>
+        <p class="mb-0"><%= link_to mark.title, mark.url, class: 'title text-dark' %></p>
+        <p class="url"><%= link_to mark.url, mark.url, class: 'text-muted' %></p>
         
         <% if user_signed_in? %>
           <%= link_to sanitize('<i class="fa fa-ellipsis-h"></i>'), edit_mark_path(mark), class: 'circle_btn setting' %>
