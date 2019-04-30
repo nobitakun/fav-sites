@@ -18,7 +18,7 @@
     <% end %>
       <% if user_signed_in? && controller.controller_name == 'static_pages' && controller.action_name == 'home'%>
         <li>
-          <button class="add_mark_btn hover" data-toggle="modal" data-target="#addMarkModal"><i class="fa fa-plus-circle"></i></button>
+          <%= render 'marks/add_btn' %>
         </li>
       <% end %>
   </ul>
@@ -27,7 +27,7 @@
   <% if user_signed_in? && controller.controller_name == 'static_pages' && controller.action_name == 'home'%>
     <ul class="mark_archive_list d-flex flex-wrap">
       <li>
-        <button class="add_mark_btn hover" data-toggle="modal" data-target="#addMarkModal"><i class="fa fa-plus-circle"></i></button>
+        <%= render 'marks/add_btn' %>
       </li>
     </ul>
   <% end %>

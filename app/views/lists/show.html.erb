@@ -1,7 +1,0 @@
-<% content_for(:title, @list.name) %>
-<% content_for(:body_class, 'list') %>
-<% content_for(:body_id, 'show') %>
-
-<h1><%= @list.name %></h1>
-
-<%= render 'stars/stars', stars: @list.stars %>
