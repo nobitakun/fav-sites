@@ -66,27 +66,31 @@ class Users::RegistrationsController < Devise::RegistrationsController
     config.mark_target = 0
     config.language_setting = 0
     config.col_num = 4
-    config.save!
+    config.save
     
-    if (title = Setting.find_by(slug: 'default_site_title_1')) && (url = Setting.find_by(slug: 'default_site_url_1'))
-      resource.marks.create(title: title.content, url: url.content)
+    if resource.save
+      if (title = Setting.find_by(slug: 'default_site_title_1')) && (url = Setting.find_by(slug: 'default_site_url_1'))
+        resource.marks.create(title: title.content, url: url.content)
+      end
+      
+      if (title = Setting.find_by(slug: 'default_site_title_2')) && (url = Setting.find_by(slug: 'default_site_url_2'))
+        resource.marks.create(title: title.content, url: url.content)
+      end
+      
+      if (title = Setting.find_by(slug: 'default_site_title_3')) && (url = Setting.find_by(slug: 'default_site_url_3'))
+        resource.marks.create(title: title.content, url: url.content)
+      end
+      
+      if (title = Setting.find_by(slug: 'default_site_title_4')) && (url = Setting.find_by(slug: 'default_site_url_4'))
+        resource.marks.create(title: title.content, url: url.content)
+      end
+      
+      if (title = Setting.find_by(slug: 'default_site_title_5')) && (url = Setting.find_by(slug: 'default_site_url_5'))
+        resource.marks.create(title: title.content, url: url.content)
+      end
     end
     
-    if (title = Setting.find_by(slug: 'default_site_title_2')) && (url = Setting.find_by(slug: 'default_site_url_2'))
-      resource.marks.create(title: title.content, url: url.content)
-    end
     
-    if (title = Setting.find_by(slug: 'default_site_title_3')) && (url = Setting.find_by(slug: 'default_site_url_3'))
-      resource.marks.create(title: title.content, url: url.content)
-    end
-    
-    if (title = Setting.find_by(slug: 'default_site_title_4')) && (url = Setting.find_by(slug: 'default_site_url_4'))
-      resource.marks.create(title: title.content, url: url.content)
-    end
-    
-    if (title = Setting.find_by(slug: 'default_site_title_5')) && (url = Setting.find_by(slug: 'default_site_url_5'))
-      resource.marks.create(title: title.content, url: url.content)
-    end
     
   end
   
