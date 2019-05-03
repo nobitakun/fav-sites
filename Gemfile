@@ -56,6 +56,8 @@ gem 'mini_magick'
 
 gem 'unicorn', '5.4.1'
 
+gem 'faraday'
+
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
