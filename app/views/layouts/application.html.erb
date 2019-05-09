@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-<title><%= content_for?(:title) ? yield(:title) + ' | FavSites' : 'FavSites' %></title>
+<title><%= content_for?(:title) ? yield(:title) : 'FavSites' %></title>
 <%= yield(:meta) %>
 <meta charset="utf-8">
 <meta http-equiv="content-language" content="ja">
@@ -66,15 +66,10 @@
 <% end %>
 
 
-
-
-
 <body class="<%= yield(:body_class) %>" id="<%= yield(:body_id) %>">
   
   <header>
     <%= render 'layouts/navbar' %>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
   </header>
   
   <% if controller.controller_name == 'static_pages' && controller.action_name == 'home' && current_user && (current_user.user_config.col_num > 7 ) %>

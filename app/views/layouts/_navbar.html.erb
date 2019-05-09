@@ -5,6 +5,9 @@
   </button>
 
   <div class="collapse navbar-collapse" id="navbars">
+    <% if user_signed_in? %>
+      <div class="d-block d-md-none row bg-white p-3"><%= current_user.name %></div>
+    <% end %>
     <ul class="navbar-nav mr-auto">
       <% if user_signed_in? && current_user.root %>
         <li class="nav-item">

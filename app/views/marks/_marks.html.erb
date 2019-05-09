@@ -8,8 +8,13 @@
           <%= image_tag 'https://www.google.com/s2/favicons?domain=' + mark.url, class: 'favicon' %>
         </a>
         
-        <p class="mb-0"><%= link_to mark.title, mark.url, class: 'title text-dark' %></p>
-        <p class="url"><%= link_to mark.url, mark.url, class: 'text-muted' %></p>
+        <% if current_user && current_user.user_config.mark_target == 0 %>
+          <p class="mb-0"><%= link_to mark.title, mark.url, class: 'title text-dark', target: '_blank' %></p>
+          <p class="url"><%= link_to mark.url, mark.url, class: 'text-muted', target: '_blank' %></p>
+        <% else %>
+          <p class="mb-0"><%= link_to mark.title, mark.url, class: 'title text-dark' %></p>
+          <p class="url"><%= link_to mark.url, mark.url, class: 'text-muted' %></p>
+        <% end %>
         
         <% if user_signed_in? %>
           <%= link_to sanitize('<i class="fa fa-ellipsis-h"></i>'), edit_mark_path(mark), class: 'circle_btn setting' %>

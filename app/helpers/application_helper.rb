@@ -5,7 +5,7 @@ module ApplicationHelper
     end
     
     def mark_target_list
-        [['別タブで開く', 0], ['親ウィンドウで開く', 1]]
+        [['別タブで開く', 0], ['今のウィンドウで開く', 1]]
     end
     
 end

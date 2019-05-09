@@ -18,10 +18,10 @@ class MarksController < ApplicationController
       @mark.url = @mark.url + '/'
     end
     if @mark.save
-      flash[:success] = 'ブックマークを投稿しました。'
+      flash[:success] = 'ブックマークを設定しました。'
       redirect_to root_path
     else
-      flash.now[:danger] = 'ブックマークの投稿に失敗しました。'
+      flash.now[:danger] = 'ブックマークの設定に失敗しました。'
       render 'new'
     end
   end
