@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
+
+<% if head_tag = Setting.find_by(slug: 'head_tag') %>
+  <%= head_tag.content.present? ? head_tag.content.html_safe : '' %>
+<% end %>
+
 <title><%= content_for?(:title) ? yield(:title) : 'FavSites' %></title>
 <%= yield(:meta) %>
 <meta charset="utf-8">
@@ -17,10 +22,6 @@
 <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
 <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"></script>
-
-<% if header_tag = Setting.find_by(slug: 'header_tag') %>
-  <%= header_tag.content.present? ? header_tag.content.html_safe : '' %>
-<% end %>
 
 </head>
 
@@ -72,6 +73,12 @@
     <%= render 'layouts/navbar' %>
   </header>
   
+  <div class="container" id="container">
+    <% if header_tag = Setting.find_by(slug: 'header_tag') %>
+      <%= header_tag.content.present? ? header_tag.content.html_safe : '' %>
+    <% end %>
+  </div>
+  
   <% if controller.controller_name == 'static_pages' && controller.action_name == 'home' && current_user && (current_user.user_config.col_num > 7 ) %>
     <main role="main" class="p-5">
       <article class="main-content">
@@ -91,16 +98,20 @@
       </div><!-- .row -->
     </div><!-- .container -->
   <% end %>
-    
-
+  
+  <div class="container" id="container">
+    <% if footer_tag = Setting.find_by(slug: 'footer_tag') %>
+      <%= footer_tag.content.present? ? footer_tag.content.html_safe : '' %>
+    <% end %>
+  </div>
   
   <footer class="bg-light mt-5 border-top">
     <%= render 'layouts/footer' %>
   </footer>
   
   
-  <% if footer_tag = Setting.find_by(slug: 'footer_tag') %>
-    <%= footer_tag.content.present? ? footer_tag.content.html_safe : '' %>
+  <% if body_end_tag = Setting.find_by(slug: 'body_end_tag') %>
+    <%= body_end_tag.content.present? ? body_end_tag.content.html_safe : '' %>
   <% end %>
   
 </body>

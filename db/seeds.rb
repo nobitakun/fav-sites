@@ -49,8 +49,13 @@ Category.create(name: 'ファッション', slug: 'fasion')
 Setting.create(slug: 'site_title', label: 'サイトタイトル', content: 'タイトル')
 Setting.create(slug: 'home_meta_kayword', label: 'metaキーワード', content: 'キーワード1, キーワード2, キーワード3')
 Setting.create(slug: 'home_meta_description', label: 'metaディスクリプション', content: 'ディスクリプションが入ります。')
-Setting.create(slug: 'header_tag', label: 'ヘッダータグ', content: "<script>console.log('header_tag');</script>")
-Setting.create(slug: 'footer_tag', label: 'フッタータグ', content: "<script>console.log('footer_tag');</script>")
+
+Setting.create(slug: 'head_tag', label: 'headタグ冒頭', content: "<script>console.log('head_tag');</script>")
+Setting.create(slug: 'header_tag', label: 'ヘッダー下', content: "<script>document.write('ヘッダー下表示テスト');</script>")
+Setting.create(slug: 'footer_tag', label: 'フッター上', content: "<script>document.write('フッター上表示テスト');</script>")
+Setting.create(slug: 'body_end_tag', label: 'bodyタグ末尾', content: "<script>console.log('body_end_tag');</script>")
+
+
 Setting.create(slug: 'footer_link', label: 'フッターリンク', content: '<li class="nav-item"><a class="nav-link text-muted" href="/"><i class="fa fa-angle-right mr-2"></i>プライバシーポリシー</a></li>')
 Setting.create(slug: 'confirmation_mail_text', label: '登録メールの本文', content: '下のリンクからユーザー登録を完了してください。')
 
