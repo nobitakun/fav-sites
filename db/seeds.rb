@@ -51,8 +51,8 @@ Setting.create(slug: 'home_meta_kayword', label: 'metaキーワード', content:
 Setting.create(slug: 'home_meta_description', label: 'metaディスクリプション', content: 'ディスクリプションが入ります。')
 
 Setting.create(slug: 'head_tag', label: 'headタグ冒頭', content: "<script>console.log('head_tag');</script>")
-Setting.create(slug: 'header_tag', label: 'ヘッダー下', content: "<script>document.write('ヘッダー下表示テスト');</script>")
-Setting.create(slug: 'footer_tag', label: 'フッター上', content: "<script>document.write('フッター上表示テスト');</script>")
+Setting.create(slug: 'header_tag', label: 'ヘッダー下', content: "<p>ヘッダー下表示テスト</p>")
+Setting.create(slug: 'footer_tag', label: 'フッター上', content: "<p>フッター上表示テスト</p>")
 Setting.create(slug: 'body_end_tag', label: 'bodyタグ末尾', content: "<script>console.log('body_end_tag');</script>")
 
 
