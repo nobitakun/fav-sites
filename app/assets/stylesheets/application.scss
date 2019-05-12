@@ -218,8 +218,23 @@ footer{
   #footer-menu{
     nav{
       ul{
+        @include media-breakpoint-down(sm){
+          width: 100%;
+        }
         li{
           font-size: 12px;
+          margin: 0 20px 0 0;
+          @include media-breakpoint-down(sm){
+            width: 100%;
+            margin: 0;
+            a{
+              font-size: 14px;
+              display: block;
+              border-bottom: 1px solid #ccc;
+              width: 100%;
+              padding: 10px 24px;
+            }
+          }
         }
       }
     }

@@ -51,69 +51,42 @@ Setting.create(slug: 'home_meta_kayword', label: 'metaキーワード', content:
 Setting.create(slug: 'home_meta_description', label: 'metaディスクリプション', content: 'ディスクリプションが入ります。')
 Setting.create(slug: 'header_tag', label: 'ヘッダータグ', content: "<script>console.log('header_tag');</script>")
 Setting.create(slug: 'footer_tag', label: 'フッタータグ', content: "<script>console.log('footer_tag');</script>")
+Setting.create(slug: 'footer_link', label: 'フッターリンク', content: '<li class="nav-item"><a class="nav-link text-muted" href="/"><i class="fa fa-angle-right mr-2"></i>プライバシーポリシー</a></li>')
 Setting.create(slug: 'confirmation_mail_text', label: '登録メールの本文', content: '下のリンクからユーザー登録を完了してください。')
 
-Setting.create(slug: 'default_site_title_1', label: 'デフォルトサイト1:タイトル', content: 'Google')
-Setting.create(slug: 'default_site_url_1', label: 'デフォルトサイト1:URL', content: 'https://www.google.co.jp/')
+DefaultMark.create(title: 'Google', url: 'https://www.google.co.jp/', order_num: '1')
+DefaultMark.create(title: 'YouTube', url: 'https://www.youtube.com/', order_num: '2')
+DefaultMark.create(title: 'Amazon', url: 'https://www.amazon.co.jp/', order_num: '3')
+DefaultMark.create(title: '楽天市場', url: 'https://www.rakuten.co.jp/', order_num: '4')
+DefaultMark.create(title: 'Yahoo!ショッピング', url: 'https://shopping.yahoo.co.jp/', order_num: '5')
 
-Setting.create(slug: 'default_site_title_2', label: 'デフォルトサイト2:タイトル', content: 'YouTube')
-Setting.create(slug: 'default_site_url_2', label: 'デフォルトサイト2:URL', content: 'https://www.youtube.com/')
-
-Setting.create(slug: 'default_site_title_3', label: 'デフォルトサイト3:タイトル', content: 'Amazon')
-Setting.create(slug: 'default_site_url_3', label: 'デフォルトサイト3:URL', content: 'https://www.amazon.co.jp/')
-
-Setting.create(slug: 'default_site_title_4', label: 'デフォルトサイト4:タイトル', content: '楽天市場')
-Setting.create(slug: 'default_site_url_4', label: 'デフォルトサイト4:URL', content: 'https://www.rakuten.co.jp/')
-
-Setting.create(slug: 'default_site_title_5', label: 'デフォルトサイト5:タイトル', content: 'Yahoo!ショッピング')
-Setting.create(slug: 'default_site_url_5', label: 'デフォルトサイト5:URL', content: 'https://shopping.yahoo.co.jp/')
-
-
-
-url = 'https://www.youtube.com/'
-agent = Mechanize.new
-page = agent.get(url)
-title = page.title
-admin_user.marks.create(title: title, url: url)
-
-url = 'https://www.amazon.co.jp/'
-agent = Mechanize.new
-page = agent.get(url)
-title = page.title
-admin_user.marks.create(title: title, url: url)
 
 url = 'https://www.yahoo.co.jp/'
 agent = Mechanize.new
 page = agent.get(url)
 title = page.title
-admin_user.marks.create(title: title, url: url)
-
-url = 'https://www.rakuten.co.jp/'
-agent = Mechanize.new
-page = agent.get(url)
-title = page.title
-admin_user.marks.create(title: title, url: url)
+test_user.marks.create(title: title, url: url)
 
 url = 'https://kakaku.com/'
 agent = Mechanize.new
 page = agent.get(url)
 title = page.title
-admin_user.marks.create(title: title, url: url)
+test_user.marks.create(title: title, url: url)
 
 url = 'http://radiko.jp/'
 agent = Mechanize.new
 page = agent.get(url)
 title = page.title
-admin_user.marks.create(title: title, url: url)
+test_user.marks.create(title: title, url: url)
 
 url = 'https://www.netflix.com/'
 agent = Mechanize.new
 page = agent.get(url)
 title = page.title
-admin_user.marks.create(title: title, url: url)
+test_user.marks.create(title: title, url: url)
 
 url = 'https://www.happyon.jp/'
 agent = Mechanize.new
 page = agent.get(url)
 title = page.title
-admin_user.marks.create(title: title, url: url)
+test_user.marks.create(title: title, url: url)

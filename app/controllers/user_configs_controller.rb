@@ -1,6 +1,9 @@
 class UserConfigsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_user_config, only: [:edit, :update]
+  before_action :set_user_config, only: [:show, :edit, :update]
+  
+  def show
+  end
   
   def edit
   end

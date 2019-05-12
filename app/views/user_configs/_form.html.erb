@@ -1,0 +1,38 @@
+<%= form_for(@user_config) do |f| %>
+
+  <%= render 'shared/error_messages', object: f.object %>
+  
+  <div class="form-group">
+    <%= f.label :mark_target, 'ブックマークの開き方' %>
+    <%= f.select :mark_target, mark_target_list, {}, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :language_setting, '言語設定' %>
+    <%= f.select :language_setting, language_list, {}, class: 'form-control' %>
+  </div>
+  
+  <div class="form-group">
+    <%= f.label :col_num, '表示列の数' %>
+    <%= f.select :col_num, 1..10, {}, class: 'form-control' %>
+  </div>
+  
+  <div class="form-group">
+    <%= f.label :bg_image, '背景画像' %><br />
+    
+    <% if @user_config.bg_image.present? %>
+      <div class="bg-white p-3 mb-3">
+        <%= image_tag  @user_config.bg_image.thumb.url, class: 'thumb w-100 mb-2' %><br />
+        <%= check_box '', 'bg_delete_flug', {}, true, false %>
+        <%= label_tag '', '画像を削除する', class: 'mb-0' %>
+      </div>
+    <% end %>
+    
+    <%= f.file_field :bg_image %>
+  </div>
+  
+
+  
+  <%= f.submit '変更', class: 'btn btn-secondary btn-block' %>
+  
+<% end %>

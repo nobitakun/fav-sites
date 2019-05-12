@@ -15,7 +15,7 @@ Rails.application.routes.draw do
     sessions: 'users/sessions'
   }
   
-  resources :user_configs, only: [:update]
+  resources :user_configs, only: [:show, :update]
   get 'config', to: 'user_configs#edit', as: 'edit_user_config'
   
   resources :marks do
@@ -27,4 +27,5 @@ Rails.application.routes.draw do
   
   resources :categories
   resources :settings
+  resources :default_marks
 end

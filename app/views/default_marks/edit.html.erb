@@ -1,0 +1,25 @@
+<% content_for(:title, '設定の項目を編集') %>
+<% content_for(:body_class, 'default_mark') %>
+<% content_for(:body_id, 'edit') %>
+
+<h1>デフォルトブックマークを編集</h1>
+
+<%= form_for @default_mark, class: '' do |f| %>
+    
+  <%= render 'shared/error_messages', object: f.object %>
+  
+  <div class="form-group">
+    <%= f.label :title, 'サイト名' %>
+    <%= f.text_field :title, class: 'form-control' %>
+  </div>
+  
+  <%= hidden_field_tag :current_url, @default_mark.url %>
+  
+  <div class="form-group">
+    <%= f.label :url, 'URL' %>
+    <%= f.text_field :url, class: 'form-control' %>
+  </div>
+
+  <%= f.submit '編集', class: 'btn btn-primary btn-block' %>
+  
+<% end %>

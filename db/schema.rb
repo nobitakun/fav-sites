@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190425065630) do
+ActiveRecord::Schema.define(version: 20190512092516) do
 
   create_table "categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
     t.string "name"
@@ -28,11 +28,17 @@ ActiveRecord::Schema.define(version: 20190425065630) do
     t.index ["mark_id"], name: "index_category_marks_on_mark_id"
   end
 
+  create_table "default_marks", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
+    t.string "title"
+    t.string "url"
+    t.integer "order_num"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "marks", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
     t.string "title"
     t.string "url"
-    t.boolean "private"
-    t.boolean "search_permit"
     t.integer "order_num"
     t.bigint "user_id"
     t.datetime "created_at", null: false

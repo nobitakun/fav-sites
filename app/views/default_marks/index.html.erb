@@ -1,0 +1,15 @@
+<% content_for(:title, 'デフォルトブックマーク一覧') %>
+<% content_for(:body_class, 'default_mark') %>
+<% content_for(:body_id, 'index') %>
+
+<h1>デフォルトブックマーク一覧</h1>
+<% if @default_marks.any? %>
+  <% @default_marks.each do |default_mark| %>
+    <div class="card mb-3">
+      <dl class="card-body mb-0">
+        <dt class="mb-2"><%= default_mark.title %> (<%= link_to '編集', edit_default_mark_path(default_mark) %>)</dt>
+        <dd><%= default_mark.url %></dd>
+      </dl>
+    </div>
+  <% end %>
+<% end %>

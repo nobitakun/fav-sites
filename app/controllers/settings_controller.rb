@@ -22,11 +22,9 @@ class SettingsController < ApplicationController
   end
 
   def edit
-    @setting = Setting.find(params[:id])
   end
 
   def update
-    @setting = Setting.find(params[:id])
     if @setting.update(setting_params)
       flash[:success] = '編集しました。'
       redirect_to settings_path

@@ -1,0 +1,2 @@
+class DefaultMark < ApplicationRecord
+end
