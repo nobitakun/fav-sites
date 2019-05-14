@@ -40,6 +40,7 @@ ActiveRecord::Schema.define(version: 20190512092516) do
     t.string "title"
     t.string "url"
     t.integer "order_num"
+    t.boolean "protect", default: false
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

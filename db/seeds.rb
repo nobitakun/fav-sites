@@ -57,7 +57,7 @@ Setting.create(slug: 'body_end_tag', label: 'bodyタグ末尾', content: "<scrip
 
 
 Setting.create(slug: 'footer_link', label: 'フッターリンク', content: '<li class="nav-item"><a class="nav-link text-muted" href="/"><i class="fa fa-angle-right mr-2"></i>プライバシーポリシー</a></li>')
-Setting.create(slug: 'confirmation_mail_text', label: '登録メールの本文', content: '下のリンクからユーザー登録を完了してください。')
+Setting.create(slug: 'confirmation_mail_text', label: '登録メールの本文', content: '上記のリンクからユーザー登録を完了してください。')
 
 DefaultMark.create(title: 'Google', url: 'https://www.google.co.jp/', order_num: '1')
 DefaultMark.create(title: 'YouTube', url: 'https://www.youtube.com/', order_num: '2')

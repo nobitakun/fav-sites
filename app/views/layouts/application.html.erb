@@ -80,12 +80,14 @@
   </div>
   
   <% if controller.controller_name == 'static_pages' && controller.action_name == 'home' && current_user && (current_user.user_config.col_num > 7 ) %>
-    <main role="main" class="p-5">
-      <article class="main-content">
-        <%= render 'layouts/flash_messages' %>
-        <%= yield %>
-      </article>
-    </main>
+    <div class="row">
+      <main role="main" class="col-12 p-5">
+        <article class="main-content">
+          <%= render 'layouts/flash_messages' %>
+          <%= yield %>
+        </article>
+      </main>
+    </div><!-- .row -->
   <% else %>
     <div class="container" id="container">
       <div class="row">

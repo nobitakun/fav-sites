@@ -23,9 +23,10 @@
       </div>
      
       <%= f.submit '編集', class: 'btn btn-secondary btn-block' %>
-      <%= link_to '削除', @mark, method: :delete, data: { confirm: '本当に削除してよろしいですか？' }, class: 'btn btn-block btn-danger' %>
+      <% if !@mark.protect %>
+        <%= link_to '削除', @mark, method: :delete, data: { confirm: '本当に削除してよろしいですか？' }, class: 'btn btn-block btn-danger' %>
+      <% end %>
     <% end %>
-    
     
   </div>
   

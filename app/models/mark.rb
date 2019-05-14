@@ -7,5 +7,5 @@ class Mark < ApplicationRecord
   ranks :order_num, with_same: :user_id
   
   validates :url, presence: true, length: { maximum: 255 }, uniqueness: false
-
+  
 end

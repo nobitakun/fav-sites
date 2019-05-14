@@ -10,11 +10,7 @@ class User < ApplicationRecord
                     format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i },
                     uniqueness: { case_sensitive: false }
                     
-  has_many :marks
+  has_many :marks, dependent: :destroy
   has_one :user_config, dependent: :destroy
-  
-  def remember_me
-    true
-  end
   
 end

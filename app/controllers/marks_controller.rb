@@ -39,9 +39,15 @@ class MarksController < ApplicationController
   end
   
   def destroy
-    @mark.destroy
-    flash[:success] = '削除しました'
-    redirect_to root_path
+    unless @mark.protect
+      @mark.destroy
+      flash[:success] = '削除しました'
+      redirect_to root_path
+    else
+      flash[:danger] = '保護されているため削除できません'
+      render :edit
+    end
+    
   end
   
   def sort
@@ -90,12 +96,12 @@ class MarksController < ApplicationController
       rescue Timeout::Error 
         title = params[:mark][:url]
       end
-      params.require(:mark).permit(:url, :order_num_position).merge(title: title)
+      params.require(:mark).permit(:url, :protect, :order_num_position).merge(title: title)
     end
   end
   
   def edit_mark_params
-    params.require(:mark).permit(:url, :title)
+    params.require(:mark).permit(:url, :title, :protect)
   end
   
   def mark_order_params

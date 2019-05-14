@@ -15,7 +15,7 @@
           <p class="mb-0"><%= link_to mark.title, mark.url, class: 'title text-dark' %></p>
           <p class="url"><%= link_to mark.url, mark.url, class: 'text-muted' %></p>
         <% end %>
-        
+        <%= mark.protect %>
         <% if user_signed_in? %>
           <%= link_to sanitize('<i class="fa fa-ellipsis-h"></i>'), edit_mark_path(mark), class: 'circle_btn setting' %>
         <% end %>

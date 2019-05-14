@@ -70,7 +70,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     
     if resource.save
       DefaultMark.all.each do |dm|
-        resource.marks.create(title: dm.title, url: dm.url)
+        resource.marks.create(title: dm.title, url: dm.url, protect: true)
       end
     end
   

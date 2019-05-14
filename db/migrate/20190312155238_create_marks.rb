@@ -4,6 +4,7 @@ class CreateMarks < ActiveRecord::Migration[5.1]
       t.string :title
       t.string :url
       t.integer :order_num
+      t.boolean :protect, default: false
       
       t.references :user, foreign_key: true
       
